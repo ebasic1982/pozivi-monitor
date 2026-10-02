@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Monitor javnih poziva za MSP u FBiH  (verzija 3)
+Monitor javnih poziva za MSP u FBiH  (verzija 3.1)
 
 Radi u tri koraka:
   1) Za svaki izvor trazi RSS feed (prvo feed kategorije, pa opsti), a ako ga nema
@@ -423,8 +423,6 @@ def main():
     with_items = {it["src_url"] for it in found}
     fresh = [u for u in with_items if u not in initialized]
     seen[SRC_KEY] = sorted(initialized | with_items)
-    with open(SEEN_PATH, "w", encoding="utf-8") as f:
-        json.dump(seen, f, ensure_ascii=False, indent=1)
 
     log("")
     log(f"Ukupno relevantnih: {len(found)} | Novih za obavjestenje: {len(new)}")
@@ -450,10 +448,18 @@ def main():
         log("")
         log("Saljem obavjestenje o novim pozivima:")
         plain, body = render(new, when, f"Novi javni pozivi ({len(new)})")
-        send_email(f"[Pozivi] {len(new)} novih javnih poziva – {when}", body)
-        send_telegram(plain)
+        ok = send_email(f"[Pozivi] {len(new)} novih javnih poziva – {when}", body)
+        ok = send_telegram(plain) or ok
+        if not ok:
+            # Ne upisujemo ih kao vidjene - pokusat ce se ponovo u sljedecem prolazu
+            for it in new:
+                seen.pop(key(it), None)
+            log(f"  Obavjestenje NIJE poslano - {len(new)} novih poziva ostaje za sljedeci prolaz.")
     elif not test_mail:
         log("Nema novih poziva.")
+
+    with open(SEEN_PATH, "w", encoding="utf-8") as f:
+        json.dump(seen, f, ensure_ascii=False, indent=1)
 
 
 if __name__ == "__main__":
