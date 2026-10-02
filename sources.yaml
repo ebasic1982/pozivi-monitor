@@ -1,14 +1,15 @@
 # Izvori za praćenje javnih poziva (MSP u FBiH)
-# type: auto  -> skripta prvo pokušava pronaći RSS, pa pada na HTML parsiranje
-# Dodaj/ukloni izvore slobodno. "tier" se koristi samo za grupisanje u izvještaju.
+# Skripta za svaki izvor prvo traži RSS, a ako ga nema čita HTML stranicu.
+# Novi ili izmijenjeni izvor se prvi put upisuje BEZ obavještenja (nema poplave starih poziva).
+# "tier" služi samo za grupisanje u obavještenju.
 
 - name: "FMRPO – Javni natječaji/Konkursi"
   tier: "Federalni"
   url: "https://fmrpo.gov.ba/category/javni-natjecajikonkursi/"
 
-- name: "FMRPO – Tenderi/Podsticaji"
+- name: "FMRPO – Platforma javnih poziva"
   tier: "Federalni"
-  url: "https://fmrpo.gov.ba/category/javne-nabave/"
+  url: "https://javnipozivi.fmrpo.gov.ba/"
 
 - name: "Razvojna banka FBiH"
   tier: "Federalni"
@@ -38,14 +39,16 @@
   tier: "Ostali kantoni"
   url: "https://mptk.gov.ba/"
 
-- name: "USK – Vlada"
+- name: "USK – Ministarstvo privrede (javni pozivi)"
   tier: "Ostali kantoni"
-  url: "https://vladausk.ba/"
+  url: "https://vladausk.ba/v4/index/ministarstvo-privrede/4?vrsta=4"
 
 - name: "BPK Goražde – Pozivi/Tenderi"
   tier: "Ostali kantoni"
   url: "https://bpkg.gov.ba/kategorija/pozivi-tenderi"
 
-- name: "SBK – ePrivreda"
+# SBK: platforma eprivreda.ba je JavaScript aplikacija i ne može se automatski čitati,
+# pa pratimo stranicu Vlade SBK gdje se objavljuju obavještenja o pozivima.
+- name: "SBK – Vlada (obavještenja)"
   tier: "Ostali kantoni"
-  url: "https://www.eprivreda.ba/"
+  url: "https://sbk-ksb.gov.ba/bs/"

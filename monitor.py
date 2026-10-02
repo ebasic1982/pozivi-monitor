@@ -1,42 +1,54 @@
 #!/usr/bin/env python3
 """
-Monitor javnih poziva za MSP u FBiH.
+Monitor javnih poziva za MSP u FBiH  (verzija 2)
 
 Radi u tri koraka:
-  1) Za svaki izvor pokusa naci RSS feed (auto-discovery), pa padne na HTML parsiranje.
+  1) Za svaki izvor trazi RSS feed (prvo feed kategorije, pa opsti), a ako ga nema
+     ili nema relevantnih stavki - cita HTML stranicu.
   2) Filtrira linkove po kljucnim rijecima (javni poziv, konkurs, poticaj, subvencija...).
-  3) Uporedi sa seen.json -> salje notifikaciju SAMO za nove stavke.
+  3) Uporedjuje sa seen.json i salje obavjestenje SAMO za nove stavke.
 
-Notifikacije: Telegram i/ili email (SMTP). Konfiguracija preko env varijabli.
+Novi ili izmijenjeni izvor se prvi put upisuje "tiho" (bez obavjestenja),
+pa dodavanje izvora u sources.yaml ne izaziva poplavu starih poziva.
+
+Obavjestenja: email (SMTP) i/ili Telegram. Podesavanje preko GitHub secreta.
+Probno slanje: pokretanje workflowa sa ukljucenom opcijom "test_mail".
 """
 
 import os
 import re
-import json
 import sys
+import json
 import time
 import html
 import smtplib
+import warnings
 import unicodedata
 import datetime as dt
 from email.message import EmailMessage
 from urllib.parse import urljoin, urlparse
 
-import warnings
-
 import requests
 import feedparser
+import urllib3
 import yaml
 from bs4 import BeautifulSoup, XMLParsedAsHTMLWarning
 
 warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SEEN_PATH = os.path.join(ROOT, "seen.json")
 SOURCES_PATH = os.path.join(ROOT, "sources.yaml")
 PAGE_PATH = os.path.join(ROOT, "docs", "index.html")
+SRC_KEY = "__sources__"   # spisak izvora koji su vec inicijalizovani
 
-UA = "Mozilla/5.0 (compatible; PoziviMonitor/1.0; +poslovni monitoring javnih poziva)"
+HEADERS = {
+    "User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                   "(KHTML, like Gecko) Chrome/126.0 Safari/537.36"),
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "bs,hr;q=0.9,sr;q=0.8,en;q=0.7",
+}
 TIMEOUT = 25
 
 # Kljucne rijeci (bez dijakritike - tekst se normalizuje prije poredjenja)
@@ -47,26 +59,33 @@ KEYWORDS = [
     "bespovratn", "grant", "kreditn", "refundacij", "potpore", "potpora",
 ]
 
-# Ako se pojavi bilo koja od ovih - preskoci (smanjuje sum)
+# Ako se pojavi bilo koja od ovih - preskoci (rezultati, nabavke, oglasi za posao)
 NEGATIVE = [
-    "javna nabav", "nabavka", "tender za", "odluka o izboru ponudjaca",
+    "javna nabav", "javne nabav", "nabavka", "tender za",
+    "odluka o izboru", "odluka o dodjeli", "odluka o odobravanju",
+    "rang lista", "rang-lista", "rang listu", "rang-listu",
+    "preliminarna lista", "lista korisnika", "lista odobrenih",
+    "rezultati", "obavijest o dodjeli ugovora",
     "prodaja stalnih sredstava", "oglas za prijem", "konkurs za prijem",
-    "javni oglas za popunu", "rezultati", "obavijest o dodjeli ugovora",
+    "javni oglas za popunu",
 ]
 
 
-def strip_dia(s: str) -> str:
-    """Ukloni dijakritike: natjecaj == natjecaj, poziv == poziv."""
+def log(msg=""):
+    print(msg, flush=True)
+
+
+def strip_dia(s):
     s = s.replace("đ", "d").replace("Đ", "D")
     s = unicodedata.normalize("NFKD", s)
     return "".join(c for c in s if not unicodedata.combining(c))
 
 
-def norm(s: str) -> str:
+def norm(s):
     return re.sub(r"\s+", " ", strip_dia(html.unescape(s or "")).lower()).strip()
 
 
-def matches(text: str) -> bool:
+def matches(text):
     t = norm(text)
     if len(t) < 12:
         return False
@@ -75,31 +94,48 @@ def matches(text: str) -> bool:
     return any(k in t for k in KEYWORDS)
 
 
-def get(url: str):
-    try:
-        r = requests.get(url, headers={"User-Agent": UA}, timeout=TIMEOUT, verify=True)
+def get(url, quiet=False):
+    """GET sa browserskim zaglavljima. Ako SSL certifikat ne valja, pokusa bez provjere
+    (citamo samo javne stranice, ne saljemo nikakve podatke)."""
+    for verify in (True, False):
+        try:
+            r = requests.get(url, headers=HEADERS, timeout=TIMEOUT, verify=verify)
+        except requests.exceptions.SSLError:
+            if verify:
+                if not quiet:
+                    log("     ! SSL certifikat neispravan - pokusavam bez provjere")
+                continue
+            return None
+        except Exception as e:
+            if not quiet:
+                log(f"     ! greska pri pristupu: {type(e).__name__}")
+            return None
         if r.status_code == 200:
             return r
-    except Exception as e:
-        print(f"    ! greska: {type(e).__name__}: {e}", file=sys.stderr)
+        if not quiet:
+            log(f"     ! server vratio HTTP {r.status_code}")
+        return None
     return None
 
 
-def discover_feed(url: str, soup: BeautifulSoup | None):
-    """Nadji RSS: prvo <link rel=alternate>, pa uobicajene putanje (WP /feed/, Drupal /rss)."""
-    cands = [url]  # sam URL moze vec biti feed
+def discover_feed(url, soup):
+    """Redoslijed: sam URL -> feed kategorije (/feed/ na putanji) -> <link rel=alternate>
+    -> opsti feedovi sajta."""
+    p = urlparse(url)
+    root = f"{p.scheme}://{p.netloc}"
+    cands = [url]
+    if not p.query:
+        base = url if url.endswith("/") else url + "/"
+        cands.append(base + "feed/")
     if soup:
         for ln in soup.find_all("link", rel=lambda v: v and "alternate" in v):
-            if "rss" in (ln.get("type") or "") or "atom" in (ln.get("type") or ""):
-                if ln.get("href"):
-                    cands.append(urljoin(url, ln["href"]))
-    base = url if url.endswith("/") else url + "/"
-    root = f"{urlparse(url).scheme}://{urlparse(url).netloc}"
-    cands += [base + "feed/", base + "rss", root + "/rss", root + "/feed/",
-              root + "/?feed=rss2"]
+            typ = ln.get("type") or ""
+            if ("rss" in typ or "atom" in typ) and ln.get("href"):
+                cands.append(urljoin(url, ln["href"]))
+    cands += [root + "/feed/", root + "/rss", root + "/?feed=rss2"]
 
     for c in dict.fromkeys(cands):
-        r = get(c)
+        r = get(c, quiet=True)
         if not r:
             continue
         fp = feedparser.parse(r.content)
@@ -108,70 +144,116 @@ def discover_feed(url: str, soup: BeautifulSoup | None):
     return None, None
 
 
-def from_feed(fp, src) -> list:
+def item(title, link, src, via):
+    return {"title": title[:300], "link": link, "source": src["name"],
+            "tier": src.get("tier", ""), "src_url": src["url"], "via": via}
+
+
+def from_feed(fp, src):
     out = []
     for e in fp.entries[:60]:
         title = (e.get("title") or "").strip()
         link = (e.get("link") or "").strip()
-        if not title or not link or not matches(title):
-            continue
-        out.append({"title": title[:300], "link": link, "source": src["name"],
-                    "tier": src.get("tier", ""), "via": "rss"})
+        if title and link and matches(title):
+            out.append(item(title, link, src, "rss"))
     return out
 
 
-def from_html(url: str, soup: BeautifulSoup, src) -> list:
+def from_html(url, soup, src):
     out, seen_links = [], set()
     for a in soup.find_all("a", href=True):
         text = a.get_text(" ", strip=True)
         if not matches(text):
             continue
         link = urljoin(url, a["href"])
-        if link in seen_links or link.startswith(("mailto:", "tel:", "#")):
+        if link in seen_links or link.startswith(("mailto:", "tel:", "#", "javascript:")):
             continue
         seen_links.add(link)
-        out.append({"title": text[:300], "link": link, "source": src["name"],
-                    "tier": src.get("tier", ""), "via": "html"})
+        out.append(item(text, link, src, "html"))
     return out[:40]
 
 
-def scan(src) -> list:
+def scan(src):
+    """Vraca (stavke, dostupan). Izvor je 'dostupan' ako se stranica ili feed ucitao."""
     url = src["url"]
-    print(f"  -> {src['name']}")
+    log(f"  -> {src['name']}")
     r = get(url)
     soup = BeautifulSoup(r.content, "html.parser") if r else None
 
     feed_url, fp = discover_feed(url, soup)
     if fp:
         items = from_feed(fp, src)
-        print(f"     RSS: {feed_url} ({len(items)} relevantnih)")
+        log(f"     RSS: {feed_url} ({len(items)} relevantnih)")
         if items:
-            return items
+            return items, True
     if soup:
         items = from_html(url, soup, src)
-        print(f"     HTML fallback ({len(items)} relevantnih)")
-        return items
-    print("     preskoceno (nedostupno)")
-    return []
+        log(f"     HTML ({len(items)} relevantnih)")
+        return items, True
+    if fp:
+        return [], True
+    log("     preskoceno (nedostupno)")
+    return [], False
 
 
-def load_seen() -> dict:
+def key(it):
+    return it["link"].split("#")[0].rstrip("/")
+
+
+def load_seen():
+    """Ucitava bazu. Stari format (bez spiska izvora) se odbacuje, pa se svi izvori
+    ponovo inicijalizuju tiho - bez obavjestenja."""
     if os.path.exists(SEEN_PATH):
         try:
             with open(SEEN_PATH, encoding="utf-8") as f:
-                return json.load(f)
+                data = json.load(f)
+            if isinstance(data, dict) and SRC_KEY in data:
+                return data
+            log("Baza je u starom formatu - izvori ce se ponovo upisati bez obavjestenja.")
         except Exception:
-            pass
-    return {}
+            log("Baza nije citljiva - pravim novu.")
+    return {SRC_KEY: []}
 
 
-def key(it) -> str:
-    return norm(it["source"]) + "|" + it["link"].split("?")[0].rstrip("/")
+# ---------------- obavjestenja ----------------
+
+SMTP_VARS = ["SMTP_HOST", "SMTP_PORT", "SMTP_USER", "SMTP_PASS", "MAIL_TO"]
 
 
-# ---------- notifikacije ----------
+def send_email(subject, body_html):
+    missing = [v for v in SMTP_VARS if not os.getenv(v)]
+    if missing:
+        if len(missing) < len(SMTP_VARS):
+            log(f"  Email: nedostaju secreti: {', '.join(missing)}")
+        return False
+    host, port = os.getenv("SMTP_HOST").strip(), int(os.getenv("SMTP_PORT").strip())
+    user, pwd = os.getenv("SMTP_USER").strip(), os.getenv("SMTP_PASS").replace(" ", "")
+    to = os.getenv("MAIL_TO").strip()
+    try:
+        m = EmailMessage()
+        m["Subject"] = subject
+        m["From"] = user
+        m["To"] = to
+        m.set_content("Novi javni pozivi - pogledaj HTML verziju poruke.")
+        m.add_alternative(body_html, subtype="html")
+        if port == 465:
+            server = smtplib.SMTP_SSL(host, port, timeout=TIMEOUT)
+        else:
+            server = smtplib.SMTP(host, port, timeout=TIMEOUT)
+            server.starttls()
+        with server as s:
+            s.login(user, pwd)
+            s.send_message(m)
+        log(f"  Email: POSLANO na {to}")
+        return True
+    except smtplib.SMTPAuthenticationError:
+        log("  Email: PRIJAVA ODBIJENA - provjeri SMTP_USER i App Password (SMTP_PASS)")
+    except Exception as e:
+        log(f"  Email: greska - {type(e).__name__}: {e}")
+    return False
 
-def send_telegram(text: str) -> bool:
+
+def send_telegram(text):
     tok, chat = os.getenv("TELEGRAM_TOKEN"), os.getenv("TELEGRAM_CHAT_ID")
     if not (tok and chat):
         return False
@@ -181,110 +263,122 @@ def send_telegram(text: str) -> bool:
             json={"chat_id": chat, "text": text[:4000],
                   "parse_mode": "HTML", "disable_web_page_preview": True},
             timeout=TIMEOUT)
-        print("  Telegram:", "OK" if r.status_code == 200 else f"greska {r.text[:200]}")
+        log("  Telegram: " + ("POSLANO" if r.status_code == 200 else f"greska {r.status_code}"))
         return r.status_code == 200
     except Exception as e:
-        print("  Telegram greska:", e, file=sys.stderr)
+        log(f"  Telegram: greska - {e}")
         return False
 
 
-def send_email(subject: str, body_html: str) -> bool:
-    host, user = os.getenv("SMTP_HOST"), os.getenv("SMTP_USER")
-    pwd, to = os.getenv("SMTP_PASS"), os.getenv("MAIL_TO")
-    if not all([host, user, pwd, to]):
-        return False
-    try:
-        m = EmailMessage()
-        m["Subject"] = subject
-        m["From"] = user
-        m["To"] = to
-        m.set_content("Novi javni pozivi - pogledaj HTML verziju.")
-        m.add_alternative(body_html, subtype="html")
-        with smtplib.SMTP(host, int(os.getenv("SMTP_PORT", "587")), timeout=TIMEOUT) as s:
-            s.starttls()
-            s.login(user, pwd)
-            s.send_message(m)
-        print("  Email: OK")
-        return True
-    except Exception as e:
-        print("  Email greska:", e, file=sys.stderr)
-        return False
-
-
-def render(items, when) -> tuple:
+def render(items, when, heading):
     by = {}
     for it in items:
         by.setdefault(it["tier"] or "Ostalo", []).append(it)
-
-    plain = [f"<b>Novi javni pozivi ({len(items)})</b> — {when}\n"]
-    h = [f"<h2>Novi javni pozivi ({len(items)})</h2><p><i>{when}</i></p>"]
+    plain = [f"<b>{html.escape(heading)}</b> — {when}\n"]
+    h = [f"<h2 style='color:#1F4E79'>{html.escape(heading)}</h2><p><i>{when}</i></p>"]
     for tier, lst in by.items():
         plain.append(f"\n<b>{html.escape(tier)}</b>")
-        h.append(f"<h3>{html.escape(tier)}</h3><ul>")
+        h.append(f"<h3 style='color:#2E75B6;margin-bottom:4px'>{html.escape(tier)}</h3><ul>")
         for it in lst:
             plain.append(f"• <a href=\"{html.escape(it['link'])}\">{html.escape(it['title'][:120])}</a>"
                          f"\n  <i>{html.escape(it['source'])}</i>")
-            h.append(f"<li><a href=\"{html.escape(it['link'])}\">{html.escape(it['title'])}</a>"
-                     f"<br><small>{html.escape(it['source'])}</small></li>")
+            h.append(f"<li style='margin:6px 0'><a href=\"{html.escape(it['link'])}\">"
+                     f"{html.escape(it['title'])}</a><br><small style='color:#777'>"
+                     f"{html.escape(it['source'])}</small></li>")
         h.append("</ul>")
+    h.append("<hr><p><small style='color:#777'>Automatsko obavještenje. "
+             "Uslove uvijek provjeriti u originalnom tekstu poziva.</small></p>")
     return "\n".join(plain), "".join(h)
 
 
-def write_page(items, when):
-    _, body = render(items, when) if items else ("", "<p>Nema novih poziva u zadnjem prolazu.</p>")
+def write_page(new, found, when):
+    parts = []
+    if new:
+        parts.append(render(new, when, f"Novo u zadnjem prolazu ({len(new)})")[1])
+    else:
+        parts.append("<p>Nema novih poziva u zadnjem prolazu.</p>")
+    if found:
+        parts.append(render(found, when, f"Trenutno pronađeno na izvorima ({len(found)})")[1])
     os.makedirs(os.path.dirname(PAGE_PATH), exist_ok=True)
     with open(PAGE_PATH, "w", encoding="utf-8") as f:
         f.write(f"""<!doctype html><html lang="bs"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Monitor javnih poziva – MSP FBiH</title>
-<style>body{{font-family:system-ui,Arial,sans-serif;max-width:840px;margin:2rem auto;padding:0 1rem;
-color:#222;line-height:1.5}}h1{{color:#1F4E79}}h3{{color:#2E75B6;margin-bottom:.3rem}}
-li{{margin:.4rem 0}}small{{color:#777}}a{{color:#1F4E79}}</style></head><body>
-<h1>Monitor javnih poziva – MSP u FBiH</h1>
-<p><small>Zadnje ažuriranje: {html.escape(when)}</small></p>{body}
-<hr><p><small>Automatski generisano. Uvijek provjeriti uslove u originalnom tekstu poziva.</small></p>
+<style>body{{font-family:system-ui,Arial,sans-serif;max-width:860px;margin:2rem auto;
+padding:0 1rem;color:#222;line-height:1.5}}a{{color:#1F4E79}}</style></head><body>
+<h1 style="color:#1F4E79">Monitor javnih poziva – MSP u FBiH</h1>
+<p><small>Zadnje ažuriranje: {html.escape(when)}</small></p>{''.join(parts)}
 </body></html>""")
 
 
+# ---------------- glavni tok ----------------
+
 def main():
     when = dt.datetime.now().strftime("%d.%m.%Y %H:%M")
+    test_mail = os.getenv("TEST_MAIL", "").strip().lower() == "true"
+
     with open(SOURCES_PATH, encoding="utf-8") as f:
         sources = yaml.safe_load(f)
 
-    print(f"Skeniram {len(sources)} izvora...")
-    found = []
+    seen = load_seen()
+    initialized = set(seen[SRC_KEY])
+
+    log(f"Skeniram {len(sources)} izvora...")
+    found, reachable = [], []
     for src in sources:
         try:
-            found += scan(src)
+            items, ok = scan(src)
+            found += items
+            if ok:
+                reachable.append(src["url"])
         except Exception as e:
-            print(f"  !! {src['name']}: {e}", file=sys.stderr)
+            log(f"  !! {src.get('name')}: {type(e).__name__}: {e}")
         time.sleep(1)
 
-    seen = load_seen()
-    first_run = not seen
-    new = []
+    new, silent = [], 0
     for it in found:
         k = key(it)
-        if k not in seen:
-            seen[k] = {"title": it["title"], "first_seen": when}
+        if k in seen:
+            continue
+        seen[k] = {"title": it["title"], "source": it["source"], "first_seen": when}
+        if it["src_url"] in initialized:
             new.append(it)
+        else:
+            silent += 1
 
+    fresh = [u for u in reachable if u not in initialized]
+    seen[SRC_KEY] = sorted(initialized | set(reachable))
     with open(SEEN_PATH, "w", encoding="utf-8") as f:
         json.dump(seen, f, ensure_ascii=False, indent=1)
 
-    print(f"\nUkupno relevantnih: {len(found)} | Novih: {len(new)}")
-    write_page(new if new else found, when)
+    log("")
+    log(f"Ukupno relevantnih: {len(found)} | Novih za obavjestenje: {len(new)}")
+    if fresh:
+        log(f"Novi/izmijenjeni izvori upisani bez obavjestenja: {len(fresh)} ({silent} stavki)")
+    write_page(new, found, when)
 
-    if first_run:
-        print("Prvi prolaz – baza inicijalizovana, notifikacije se ne salju.")
-        return
-    if not new:
-        print("Nema novih poziva.")
-        return
+    if test_mail:
+        log("")
+        log("PROBNO SLANJE (test_mail ukljucen):")
+        sample = found[:5]
+        heading = "PROBNO SLANJE – primjer obavještenja"
+        if sample:
+            plain, body = render(sample, when, heading)
+        else:
+            plain = body = f"<b>{heading}</b><br>Monitor radi, ali trenutno nema pronađenih stavki."
+        ok = send_email(f"[TEST] Monitor javnih poziva – {when}", body)
+        ok = send_telegram(plain) or ok
+        if not ok:
+            log("  NIJE POSLANO - nijedan kanal nije uspio (pogledaj poruke iznad).")
 
-    plain, body = render(new, when)
-    send_telegram(plain)
-    send_email(f"[Pozivi] {len(new)} novih javnih poziva – {when}", body)
+    if new:
+        log("")
+        log("Saljem obavjestenje o novim pozivima:")
+        plain, body = render(new, when, f"Novi javni pozivi ({len(new)})")
+        send_email(f"[Pozivi] {len(new)} novih javnih poziva – {when}", body)
+        send_telegram(plain)
+    elif not test_mail:
+        log("Nema novih poziva.")
 
 
 if __name__ == "__main__":
