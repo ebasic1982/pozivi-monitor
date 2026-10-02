@@ -1,0 +1,43 @@
+name: Monitor javnih poziva
+
+on:
+  schedule:
+    # Svaki dan u 06:00 UTC (08:00 po sarajevskom ljetnom vremenu).
+    # Za sedmicno: "0 6 * * 1" (ponedjeljkom). Za mjesecno: "0 6 1 * *" (1. u mjesecu).
+    - cron: "0 6 * * *"
+  workflow_dispatch:        # dugme za rucno pokretanje
+
+permissions:
+  contents: write           # da moze upisati seen.json nazad
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instaliraj zavisnosti
+        run: pip install requests feedparser beautifulsoup4 pyyaml
+
+      - name: Pokreni monitor
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+        run: python monitor.py
+
+      - name: Sacuvaj stanje (seen.json + stranica)
+        run: |
+          git config user.name "pozivi-monitor"
+          git config user.email "bot@users.noreply.github.com"
+          git add seen.json docs/index.html
+          git diff --staged --quiet || git commit -m "Update: $(date +'%d.%m.%Y %H:%M')"
+          git push
