@@ -1,0 +1,51 @@
+# Izvori za praćenje javnih poziva (MSP u FBiH)
+# type: auto  -> skripta prvo pokušava pronaći RSS, pa pada na HTML parsiranje
+# Dodaj/ukloni izvore slobodno. "tier" se koristi samo za grupisanje u izvještaju.
+
+- name: "FMRPO – Javni natječaji/Konkursi"
+  tier: "Federalni"
+  url: "https://fmrpo.gov.ba/category/javni-natjecajikonkursi/"
+
+- name: "FMRPO – Tenderi/Podsticaji"
+  tier: "Federalni"
+  url: "https://fmrpo.gov.ba/category/javne-nabave/"
+
+- name: "Razvojna banka FBiH"
+  tier: "Federalni"
+  url: "https://rbfbih.ba/"
+
+- name: "Ministarstvo privrede KS – Konkursi / Javni pozivi"
+  tier: "Kanton Sarajevo"
+  url: "https://mp.ks.gov.ba/aktuelo/konkursi"
+
+- name: "JU Služba za zapošljavanje KS"
+  tier: "Kanton Sarajevo"
+  url: "https://szks.ba/javni-pozivi/"
+
+- name: "Općina Novi Grad Sarajevo"
+  tier: "Općine KS"
+  url: "https://www.novigradsarajevo.ba/cat/news/invitation/"
+
+- name: "ZDK – Ministarstvo za privredu"
+  tier: "Ostali kantoni"
+  url: "https://zdk.ba/ministarstvo-za-privredu-javni-pozivi"
+
+- name: "HNK – Ministarstvo privrede"
+  tier: "Ostali kantoni"
+  url: "https://privredahnk.gov.ba/"
+
+- name: "TK – Ministarstvo privrede"
+  tier: "Ostali kantoni"
+  url: "https://mptk.gov.ba/"
+
+- name: "USK – Vlada"
+  tier: "Ostali kantoni"
+  url: "https://vladausk.ba/"
+
+- name: "BPK Goražde – Pozivi/Tenderi"
+  tier: "Ostali kantoni"
+  url: "https://bpkg.gov.ba/kategorija/pozivi-tenderi"
+
+- name: "SBK – ePrivreda"
+  tier: "Ostali kantoni"
+  url: "https://www.eprivreda.ba/"
