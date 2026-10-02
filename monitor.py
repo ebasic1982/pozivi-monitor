@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Monitor javnih poziva za MSP u FBiH  (verzija 2)
+Monitor javnih poziva za MSP u FBiH  (verzija 3)
 
 Radi u tri koraka:
   1) Za svaki izvor trazi RSS feed (prvo feed kategorije, pa opsti), a ako ga nema
@@ -67,7 +67,7 @@ NEGATIVE = [
     "preliminarna lista", "lista korisnika", "lista odobrenih",
     "rezultati", "obavijest o dodjeli ugovora",
     "prodaja stalnih sredstava", "oglas za prijem", "konkurs za prijem",
-    "javni oglas za popunu",
+    "javni oglas za popunu", "za prijem", "zakup prostora", "osposobljavanj",
 ]
 
 
@@ -159,12 +159,36 @@ def from_feed(fp, src):
     return out
 
 
+def context_title(a):
+    """Za stranice gdje naslov poziva nije u samom linku (npr. link je samo 'Detalji'
+    ili putanja): trazi naslov u najblizem redu/bloku oko linka."""
+    node = a
+    for _ in range(5):
+        node = node.parent
+        if node is None or node.name in ("body", "html"):
+            break
+        if len(node.get_text(" ", strip=True)) > 700:
+            break
+        best = ""
+        for s in node.stripped_strings:
+            if matches(s) and len(s) > len(best):
+                best = s
+        if best:
+            return best
+    return None
+
+
 def from_html(url, soup, src):
     out, seen_links = [], set()
+    context_mode = src.get("mode") == "context"
     for a in soup.find_all("a", href=True):
         text = a.get_text(" ", strip=True)
         if not matches(text):
-            continue
+            if not context_mode:
+                continue
+            text = context_title(a)
+            if not text:
+                continue
         link = urljoin(url, a["href"])
         if link in seen_links or link.startswith(("mailto:", "tel:", "#", "javascript:")):
             continue
@@ -220,36 +244,76 @@ def load_seen():
 SMTP_VARS = ["SMTP_HOST", "SMTP_PORT", "SMTP_USER", "SMTP_PASS", "MAIL_TO"]
 
 
+def _smtp_attempt(host, port, user, pwd, msg):
+    """Jedan pokusaj slanja. Vraca (uspjeh, faza_greske, opis)."""
+    stage = "povezivanje"
+    try:
+        if port == 465:
+            s = smtplib.SMTP_SSL(host, port, timeout=TIMEOUT)
+        else:
+            s = smtplib.SMTP(host, port, timeout=TIMEOUT)
+            stage = "TLS"
+            s.starttls()
+        try:
+            stage = "prijava"
+            s.login(user, pwd)
+            stage = "slanje"
+            s.send_message(msg)
+        finally:
+            try:
+                s.quit()
+            except Exception:
+                pass
+        return True, None, None
+    except smtplib.SMTPAuthenticationError as e:
+        return False, "auth", f"kod {e.smtp_code}"
+    except Exception as e:
+        return False, stage, f"{type(e).__name__}: {e}"
+
+
 def send_email(subject, body_html):
-    missing = [v for v in SMTP_VARS if not os.getenv(v)]
+    missing = [v for v in SMTP_VARS if not (os.getenv(v) or "").strip()]
     if missing:
         if len(missing) < len(SMTP_VARS):
             log(f"  Email: nedostaju secreti: {', '.join(missing)}")
         return False
-    host, port = os.getenv("SMTP_HOST").strip(), int(os.getenv("SMTP_PORT").strip())
-    user, pwd = os.getenv("SMTP_USER").strip(), os.getenv("SMTP_PASS").replace(" ", "")
+
+    host = os.getenv("SMTP_HOST").strip()
+    user = os.getenv("SMTP_USER").strip()
     to = os.getenv("MAIL_TO").strip()
+    pwd = re.sub(r"\s+", "", os.getenv("SMTP_PASS"))
     try:
-        m = EmailMessage()
-        m["Subject"] = subject
-        m["From"] = user
-        m["To"] = to
-        m.set_content("Novi javni pozivi - pogledaj HTML verziju poruke.")
-        m.add_alternative(body_html, subtype="html")
-        if port == 465:
-            server = smtplib.SMTP_SSL(host, port, timeout=TIMEOUT)
-        else:
-            server = smtplib.SMTP(host, port, timeout=TIMEOUT)
-            server.starttls()
-        with server as s:
-            s.login(user, pwd)
-            s.send_message(m)
-        log(f"  Email: POSLANO na {to}")
-        return True
-    except smtplib.SMTPAuthenticationError:
-        log("  Email: PRIJAVA ODBIJENA - provjeri SMTP_USER i App Password (SMTP_PASS)")
-    except Exception as e:
-        log(f"  Email: greska - {type(e).__name__}: {e}")
+        port = int(os.getenv("SMTP_PORT").strip())
+    except ValueError:
+        log("  Email: SMTP_PORT nije broj - koristim standardni STARTTLS port")
+        port = 587
+
+    # Provjere bez otkrivanja vrijednosti (GitHub ionako maskira secrete u logu)
+    log("  Email provjera: "
+        f"host je Gmail server: {'DA' if host.lower() == 'smtp.gmail.com' else 'NE'} | "
+        f"port standardan: {'DA' if port in (587, 465) else 'NE'} | "
+        f"SMTP_USER ima @: {'DA' if '@' in user else 'NE'} | "
+        f"SMTP_PASS ima 16 znakova: {'DA' if len(pwd) == 16 else 'NE'}")
+
+    m = EmailMessage()
+    m["Subject"] = subject
+    m["From"] = user
+    m["To"] = to
+    m.set_content("Novi javni pozivi - pogledaj HTML verziju poruke.")
+    m.add_alternative(body_html, subtype="html")
+
+    ports = [port] + [p for p in (587, 465) if p != port]
+    for p in ports:
+        mode = "SSL" if p == 465 else "STARTTLS"
+        ok, stage, err = _smtp_attempt(host, p, user, pwd, m)
+        if ok:
+            log(f"  Email: POSLANO (nacin: {mode})")
+            return True
+        if stage == "auth":
+            log(f"  Email: PRIJAVA ODBIJENA ({err}) - provjeri SMTP_USER i App Password (SMTP_PASS)")
+            return False
+        log(f"  Email: nije uspjelo preko {mode}, faza '{stage}' - {err}")
+    log("  Email: NIJE POSLANO ni na jedan nacin.")
     return False
 
 
@@ -321,7 +385,16 @@ def main():
         sources = yaml.safe_load(f)
 
     seen = load_seen()
-    initialized = set(seen[SRC_KEY])
+    # Izvor je "upisan" tek kad u bazi ima bar jednu stavku iz njega. Izvor koji je
+    # do sada vracao 0 (npr. dok mu parser nije popravljen) prvi put se upisuje tiho.
+    url_by_name = {s["name"]: s["url"] for s in sources}
+    initialized = set()
+    for k, v in seen.items():
+        if k == SRC_KEY or not isinstance(v, dict):
+            continue
+        u = v.get("src_url") or url_by_name.get(v.get("source"))
+        if u:
+            initialized.add(u)
 
     log(f"Skeniram {len(sources)} izvora...")
     found, reachable = [], []
@@ -340,14 +413,16 @@ def main():
         k = key(it)
         if k in seen:
             continue
-        seen[k] = {"title": it["title"], "source": it["source"], "first_seen": when}
+        seen[k] = {"title": it["title"], "source": it["source"],
+                   "src_url": it["src_url"], "first_seen": when}
         if it["src_url"] in initialized:
             new.append(it)
         else:
             silent += 1
 
-    fresh = [u for u in reachable if u not in initialized]
-    seen[SRC_KEY] = sorted(initialized | set(reachable))
+    with_items = {it["src_url"] for it in found}
+    fresh = [u for u in with_items if u not in initialized]
+    seen[SRC_KEY] = sorted(initialized | with_items)
     with open(SEEN_PATH, "w", encoding="utf-8") as f:
         json.dump(seen, f, ensure_ascii=False, indent=1)
 

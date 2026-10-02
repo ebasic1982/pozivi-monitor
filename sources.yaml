@@ -1,7 +1,8 @@
 # Izvori za praćenje javnih poziva (MSP u FBiH)
 # Skripta za svaki izvor prvo traži RSS, a ako ga nema čita HTML stranicu.
-# Novi ili izmijenjeni izvor se prvi put upisuje BEZ obavještenja (nema poplave starih poziva).
+# Izvor se prvi put upisuje BEZ obavještenja (nema poplave starih poziva).
 # "tier" služi samo za grupisanje u obavještenju.
+# "mode: context" = naslov poziva nije u samom linku, nego pored njega (traži se u redu).
 
 - name: "FMRPO – Javni natječaji/Konkursi"
   tier: "Federalni"
@@ -10,6 +11,7 @@
 - name: "FMRPO – Platforma javnih poziva"
   tier: "Federalni"
   url: "https://javnipozivi.fmrpo.gov.ba/"
+  mode: context
 
 - name: "Razvojna banka FBiH"
   tier: "Federalni"
@@ -31,6 +33,8 @@
   tier: "Ostali kantoni"
   url: "https://zdk.ba/ministarstvo-za-privredu-javni-pozivi"
 
+# HNK trenutno odbija automatske posjete sa GitHub servera (HTTP 403).
+# Ostavljeno u listi: ako ih odblokiraju, izvor proradi sam, bez ikakve izmjene.
 - name: "HNK – Ministarstvo privrede"
   tier: "Ostali kantoni"
   url: "https://privredahnk.gov.ba/"
@@ -47,8 +51,9 @@
   tier: "Ostali kantoni"
   url: "https://bpkg.gov.ba/kategorija/pozivi-tenderi"
 
-# SBK: platforma eprivreda.ba je JavaScript aplikacija i ne može se automatski čitati,
-# pa pratimo stranicu Vlade SBK gdje se objavljuju obavještenja o pozivima.
-- name: "SBK – Vlada (obavještenja)"
-  tier: "Ostali kantoni"
-  url: "https://sbk-ksb.gov.ba/bs/"
+# SBK: platforma eprivreda.ba je JavaScript aplikacija (ne može se čitati automatski),
+# a stranica Vlade SBK vraća 404. Zato pratimo agregator koji objavljuje pozive
+# iz SBK, HNK i drugih kantona i općina (koristi se kao "sigurnosna mreža").
+- name: "Agregator poziva (businessplansstartup.com)"
+  tier: "Agregatori"
+  url: "https://businessplansstartup.com/"
