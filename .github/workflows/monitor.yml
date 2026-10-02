@@ -2,21 +2,25 @@ name: Monitor javnih poziva
 
 on:
   schedule:
-    # Svaki dan u 06:00 UTC (08:00 po sarajevskom ljetnom vremenu).
-    # Za sedmicno: "0 6 * * 1" (ponedjeljkom). Za mjesecno: "0 6 1 * *" (1. u mjesecu).
+    # Svaki dan u 06:00 UTC (08:00 ljeti / 07:00 zimi po sarajevskom vremenu).
     - cron: "0 6 * * *"
-  workflow_dispatch:        # dugme za rucno pokretanje
+  workflow_dispatch:
+    inputs:
+      test_mail:
+        description: "Posalji probni mail (primjer obavjestenja)"
+        type: boolean
+        default: false
 
 permissions:
-  contents: write           # da moze upisati seen.json nazad
+  contents: write
 
 jobs:
   scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
@@ -25,6 +29,7 @@ jobs:
 
       - name: Pokreni monitor
         env:
+          TEST_MAIL: ${{ inputs.test_mail }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
@@ -32,7 +37,7 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           MAIL_TO: ${{ secrets.MAIL_TO }}
-        run: python monitor.py
+        run: python -u monitor.py
 
       - name: Sacuvaj stanje (seen.json + stranica)
         run: |
