@@ -6,6 +6,7 @@
   "https://javnipozivi.fmrpo.gov.ba/",
   "https://mp.ks.gov.ba/aktuelo/konkursi",
   "https://mptk.gov.ba/",
+  "https://privredahnk.gov.ba/",
   "https://rbfbih.ba/",
   "https://szks.ba/javni-pozivi/",
   "https://vladausk.ba/v4/index/ministarstvo-privrede/4?vrsta=4",
@@ -551,5 +552,29 @@
   "source": "BPK Goražde – Pozivi/Tenderi",
   "src_url": "https://bpkg.gov.ba/kategorija/pozivi-tenderi",
   "first_seen": "29.10.2026 06:30"
+ },
+ "https://www.novigradsarajevo.ba/news/invitation/javni-poziv-privrednim-drustvima-za-dodjelu-podsticajnih-sredstava-za-sufinansiranje-troskova-certificiranja-proizvodnih-procesa-proizvoda-i-usluga": {
+  "title": "Javni poziv privrednim društvima za dodjelu podsticajnih sredstava za sufinansiranje troškova certificiranja proizvodnih procesa, proizvoda i usluga",
+  "source": "Općina Novi Grad Sarajevo",
+  "src_url": "https://www.novigradsarajevo.ba/cat/news/invitation/",
+  "first_seen": "31.10.2026 06:30"
+ },
+ "https://privredahnk.gov.ba/bs/meni/menu_cmob4qon302ao012q8gnscjy4": {
+  "title": "Javni konkursi",
+  "source": "HNK – Ministarstvo privrede",
+  "src_url": "https://privredahnk.gov.ba/",
+  "first_seen": "31.10.2026 06:30"
+ },
+ "https://privredahnk.gov.ba/bs/portal/objava/obavjestenje-u-vezi-javnog-poziva-za-odabir-korisnika-sredstava-ministarstva-privrede-s-pozicije-subvencije-privatnim-preduzecima-i-poduzetnicima-po-odluci-vlade-utvrdene-budzetom-hnk-z-639041757500000000": {
+  "title": "OBAVJEŠTENJE U VEZI JAVNOG POZIVA ZA ODABIR KORISNIKA SREDSTAVA MINISTARSTVA PRIVREDE S POZICIJE „SUBVENCIJE PRIVATNIM PREDUZEĆIMA I PODUZETNICIMA (PO ODLUCI VLADE)'' UTVRĐENE BUDŽETOM HNK ZA 2025. GODINU 16.01.2026",
+  "source": "HNK – Ministarstvo privrede",
+  "src_url": "https://privredahnk.gov.ba/",
+  "first_seen": "31.10.2026 06:30"
+ },
+ "https://privredahnk.gov.ba/bs/portal/objava/javni-poziv-za-odabir-korisnika-sredstava-ministarstva-privrede-za-2025-godinu-639005236450000000": {
+  "title": "JAVNI POZIV ZA ODABIR KORISNIKA SREDSTAVA MINISTARSTVA PRIVREDE ZA 2025. GODINU 05.12.2025",
+  "source": "HNK – Ministarstvo privrede",
+  "src_url": "https://privredahnk.gov.ba/",
+  "first_seen": "31.10.2026 06:30"
  }
 }
