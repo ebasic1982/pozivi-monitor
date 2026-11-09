@@ -594,5 +594,143 @@
   "source": "HNK – Ministarstvo privrede",
   "src_url": "https://privredahnk.gov.ba/",
   "first_seen": "06.11.2026 13:30"
+ },
+ "__health__": {
+  "https://fmrpo.gov.ba/category/javni-natjecajikonkursi/": {
+   "name": "FMRPO – Javni natječaji/Konkursi",
+   "url": "https://fmrpo.gov.ba/category/javni-natjecajikonkursi/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 7,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://javnipozivi.fmrpo.gov.ba/": {
+   "name": "FMRPO – Platforma javnih poziva",
+   "url": "https://javnipozivi.fmrpo.gov.ba/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 19,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://rbfbih.ba/": {
+   "name": "Razvojna banka FBiH",
+   "url": "https://rbfbih.ba/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 1,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://mp.ks.gov.ba/aktuelo/konkursi": {
+   "name": "Ministarstvo privrede KS – Konkursi / Javni pozivi",
+   "url": "https://mp.ks.gov.ba/aktuelo/konkursi",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 18,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://szks.ba/javni-pozivi/": {
+   "name": "JU Služba za zapošljavanje KS",
+   "url": "https://szks.ba/javni-pozivi/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 1,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://www.novigradsarajevo.ba/cat/news/invitation/": {
+   "name": "Općina Novi Grad Sarajevo",
+   "url": "https://www.novigradsarajevo.ba/cat/news/invitation/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 4,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://zdk.ba/ministarstvo-za-privredu-javni-pozivi": {
+   "name": "ZDK – Ministarstvo za privredu",
+   "url": "https://zdk.ba/ministarstvo-za-privredu-javni-pozivi",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 4,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://privredahnk.gov.ba/": {
+   "name": "HNK – Ministarstvo privrede",
+   "url": "https://privredahnk.gov.ba/",
+   "alerted": null,
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 4,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://mptk.gov.ba/": {
+   "name": "TK – Ministarstvo privrede",
+   "url": "https://mptk.gov.ba/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 5,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://vladausk.ba/v4/index/ministarstvo-privrede/4?vrsta=4": {
+   "name": "USK – Ministarstvo privrede (javni pozivi)",
+   "url": "https://vladausk.ba/v4/index/ministarstvo-privrede/4?vrsta=4",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 11,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://bpkg.gov.ba/kategorija/pozivi-tenderi": {
+   "name": "BPK Goražde – Pozivi/Tenderi",
+   "url": "https://bpkg.gov.ba/kategorija/pozivi-tenderi",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 10,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://businessplansstartup.com/": {
+   "name": "Agregator poziva (businessplansstartup.com)",
+   "url": "https://businessplansstartup.com/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 8,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  }
+ },
+ "__meta__": {
+  "last_weekly": "2026-11-09"
  }
 }
