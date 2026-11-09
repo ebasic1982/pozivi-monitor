@@ -1,15 +1,20 @@
-# Izvori za praćenje javnih poziva (MSP u FBiH)
+# Izvori za praćenje javnih poziva (MSP u FBiH) — verzija 3.3 (35 izvora)
 # Skripta za svaki izvor prvo traži RSS, a ako ga nema čita HTML stranicu.
 # Izvor se prvi put upisuje BEZ obavještenja (nema poplave starih poziva).
 # "tier" služi samo za grupisanje u obavještenju.
-# "mode: context" = naslov poziva nije u samom linku, nego pored njega (traži se u redu).
 #
-# Praćenje ispravnosti (verzija 3.2):
-#   "poznat_kvar: true" = izvor trenutno ne radi i to već znamo -> bez upozorenja,
-#                          ali kad proradi, stiže obavještenje o oporavku.
-#   "tihi_dani: 21"     = poseban prag (u danima) za upozorenje "bez stavki", za izvore
-#                          čiji opšti RSS ima malo poziva pa prirodno zna biti prazan.
-#   "health: false"     = potpuno isključuje praćenje ispravnosti za taj izvor.
+# Opcije po izvoru:
+#   mode: context       = naslov poziva nije u samom linku, nego pored njega (traži se u redu)
+#   link_obrazac: "..." = prihvata svaki link čija adresa odgovara obrascu (za agregatore
+#                          čiji naslovi ne sadrže naše ključne riječi, npr. na engleskom)
+#   poznat_kvar: true   = izvor trenutno ne radi i to već znamo -> bez upozorenja,
+#                          ali kad proradi, stiže obavještenje o oporavku
+#   tihi_dani: N        = poseban prag (u danima) za upozorenje "bez stavki", za izvore
+#                          koji prirodno znaju dugo nemati nijedan poziv
+#   health: false       = potpuno isključuje praćenje ispravnosti za taj izvor
+
+
+# ═══════════════════════ FEDERALNI NIVO ═══════════════════════
 
 - name: "FMRPO – Javni natječaji/Konkursi"
   tier: "Federalni"
@@ -25,6 +30,30 @@
   url: "https://rbfbih.ba/"
   tihi_dani: 21
 
+- name: "Fond za zaštitu okoliša FBiH – Javni konkursi"
+  tier: "Federalni"
+  url: "https://fzofbih.org.ba/kategorija/javni-konkursi/"
+
+- name: "Federalno ministarstvo okoliša i turizma"
+  tier: "Federalni"
+  url: "https://fmoit.gov.ba/"
+  tihi_dani: 30
+
+# Federalni zavod za zapošljavanje nema stranicu koja se može pratiti automatski,
+# pa pratimo računovodstveni portal koji prenosi sve FZZZ pozive.
+- name: "FZZZ pozivi (konto-ba.com)"
+  tier: "Federalni"
+  url: "https://konto-ba.com/category/javni-pozivi-fzz/"
+  tihi_dani: 60
+
+- name: "Privredna komora FBiH – Aktuelnosti"
+  tier: "Federalni"
+  url: "https://www.kfbih.com/aktuelnosti-iz-komore/"
+  tihi_dani: 30
+
+
+# ═══════════════════════ KANTON SARAJEVO ═══════════════════════
+
 - name: "Ministarstvo privrede KS – Konkursi / Javni pozivi"
   tier: "Kanton Sarajevo"
   url: "https://mp.ks.gov.ba/aktuelo/konkursi"
@@ -34,9 +63,59 @@
   url: "https://szks.ba/javni-pozivi/"
   tihi_dani: 21
 
+- name: "Grad Sarajevo – Javni pozivi, konkursi i oglasi"
+  tier: "Kanton Sarajevo"
+  url: "https://www.sarajevo.ba/hr/javni-pozivi-konkursi-i-oglasi"
+
+- name: "Obrtnička komora KS"
+  tier: "Kanton Sarajevo"
+  url: "https://okks.ba/"
+  tihi_dani: 30
+
+
+# ═══════════════════════ OPĆINE U KANTONU SARAJEVO ═══════════════════════
+
+- name: "Općina Centar Sarajevo"
+  tier: "Općine KS"
+  url: "https://www.centar.ba/javni-pozivi-i-konkursi"
+  mode: context
+
+- name: "Općina Stari Grad Sarajevo"
+  tier: "Općine KS"
+  url: "https://starigrad.ba/kategorija-jp/javni-poziv/"
+
+- name: "Općina Novo Sarajevo"
+  tier: "Općine KS"
+  url: "https://novosarajevo.ba/javni-pozivi/aktuelni-javni-pozivi/"
+
 - name: "Općina Novi Grad Sarajevo"
   tier: "Općine KS"
   url: "https://www.novigradsarajevo.ba/cat/news/invitation/"
+
+- name: "Općina Ilidža"
+  tier: "Općine KS"
+  url: "https://opcinailidza.ba/javni-pozivi/"
+
+- name: "Općina Vogošća"
+  tier: "Općine KS"
+  url: "https://vogosca.ba/category/javni_pozivi/"
+
+- name: "Općina Hadžići"
+  tier: "Općine KS"
+  url: "https://hadzici.ba/obavijesti/"
+  tihi_dani: 30
+
+- name: "Općina Ilijaš"
+  tier: "Općine KS"
+  url: "https://www.ilijas.ba/index.php/javni-pozivi"
+
+- name: "Općina Trnovo"
+  tier: "Općine KS"
+  url: "https://www.trnovo.ba/"
+  tihi_dani: 30
+
+
+# ═══════════════════════ OSTALI KANTONI ═══════════════════════
 
 - name: "ZDK – Ministarstvo za privredu"
   tier: "Ostali kantoni"
@@ -62,9 +141,61 @@
   tier: "Ostali kantoni"
   url: "https://bpkg.gov.ba/kategorija/pozivi-tenderi"
 
+- name: "Posavski kanton – Javni pozivi"
+  tier: "Ostali kantoni"
+  url: "https://www.zupanijaposavska.ba/category/javni-dokumenti/javni-pozivi/"
+
+- name: "ZHK – Ministarstvo gospodarstva"
+  tier: "Ostali kantoni"
+  url: "https://mg-zzh.com/category/aktualnosti/novosti/"
+  tihi_dani: 30
+
+- name: "ZHK – Ured Vlade za europske integracije"
+  tier: "Ostali kantoni"
+  url: "https://eui-zzh.ba/"
+  tihi_dani: 30
+
+- name: "Kanton 10 (HBŽ) – Ministarstvo gospodarstva"
+  tier: "Ostali kantoni"
+  url: "https://www.vladahbz.com/ministarstvo-gospodarstva/aktivnosti-ministarstva/"
+  tihi_dani: 30
+
 # SBK: platforma eprivreda.ba je JavaScript aplikacija (ne može se čitati automatski),
-# a stranica Vlade SBK vraća 404. Zato pratimo agregator koji objavljuje pozive
-# iz SBK, HNK i drugih kantona i općina (koristi se kao "sigurnosna mreža").
+# a stranica Vlade SBK vraća 404. SBK pozive pokrivaju agregatori ispod.
+
+
+# ═══════════════════════ EU PROGRAMI I DONATORI ═══════════════════════
+
+- name: "UNDP BiH – Vijesti i javni pozivi"
+  tier: "EU i donatori"
+  url: "https://www.undp.org/bs/bosnia-herzegovina/news"
+  tihi_dani: 30
+
+- name: "Interreg IPA Hrvatska–BiH–Crna Gora"
+  tier: "EU i donatori"
+  url: "https://interreg-hr-ba-me.eu/"
+  tihi_dani: 60
+
+
+# ═══════════════════════ AGREGATORI ("sigurnosna mreža") ═══════════════════════
+# Za svaki poziv iz agregatora uvijek otvoriti originalni izvor institucije.
+
+- name: "BH Grant – registar poziva za firme"
+  tier: "Agregatori"
+  url: "https://bhgrant.ba/firme"
+  link_obrazac: "/poziv/[^/]+"
+
+- name: "EU Fondovi i Konkursi – BiH"
+  tier: "Agregatori"
+  url: "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html"
+  link_obrazac: "\\.t\\d+\\.html"
+
 - name: "Agregator poziva (businessplansstartup.com)"
   tier: "Agregatori"
   url: "https://businessplansstartup.com/"
+
+# Općina Kupres sistematski prenosi pozive za firme (EU, FMRPO, UNDP, Interreg...).
+- name: "Općina Kupres – prenosi pozive za firme"
+  tier: "Agregatori"
+  url: "https://www.opcinakupres.ba/naslovnica"
+  tihi_dani: 30

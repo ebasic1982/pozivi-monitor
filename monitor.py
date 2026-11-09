@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Monitor javnih poziva za MSP u FBiH  (verzija 3.2)
+Monitor javnih poziva za MSP u FBiH  (verzija 3.3)
 
 Radi u tri koraka:
   1) Za svaki izvor trazi RSS feed (prvo feed kategorije, pa opsti), a ako ga nema
@@ -80,8 +80,12 @@ TIMEOUT = 25
 KEYWORDS = [
     "javni poziv", "javni konkurs", "javni natjecaj", "javnog poziva",
     "poziv za dostav", "konkurs za", "natjecaj za",
+    "poziv za projekt", "poziv za podnosenj", "poziv za prijav", "poziv na dostav",
     "poticaj", "podsticaj", "subvencij", "sufinansiranj", "sufinanciranj",
     "bespovratn", "grant", "kreditn", "refundacij", "potpore", "potpora",
+    # EU i donatorski pozivi na engleskom
+    "call for proposal", "call for application", "call for expression",
+    "public call", "funding opportunit", "challenge fund",
 ]
 
 # Ako se pojavi bilo koja od ovih - preskoci (rezultati, nabavke, oglasi za posao)
@@ -93,6 +97,11 @@ NEGATIVE = [
     "rezultati", "obavijest o dodjeli ugovora",
     "prodaja stalnih sredstava", "oglas za prijem", "konkurs za prijem",
     "javni oglas za popunu", "za prijem", "zakup prostora", "osposobljavanj",
+    "odluka o raspodjeli", "odluke o raspodjeli", "odluka o konacnoj",
+    "konacna lista", "konacnu listu", "call for tender", "procurement",
+    # pozivi gradjanima (cesti na stranicama opcina, nisu za firme)
+    "stipendi", "u zakup", "volonter", "priznanja", "ogrjev", "liga osnovnih",
+    "dodjelu stan", "zamjenskih stan", "lijecenj",
 ]
 
 
@@ -198,30 +207,74 @@ def context_title(a):
             break
         if len(node.get_text(" ", strip=True)) > 700:
             break
-        best = ""
+        best, best_path = "", ""
         for s in node.stripped_strings:
-            if matches(s) and len(s) > len(best):
+            if not matches(s):
+                continue
+            if looks_like_path(s):          # putanja fajla nije naslov - samo rezerva
+                if len(s) > len(best_path):
+                    best_path = s
+            elif len(s) > len(best):
                 best = s
         if best:
             return best
+        if best_path:
+            return slug_title(best_path)
     return None
 
 
+def looks_like_path(t):
+    """Tekst linka koji je zapravo putanja/adresa fajla, a ne naslov."""
+    t = t.strip()
+    if t.startswith(("/", "http://", "https://", "www.")):
+        return True
+    return " " not in t and len(t) > 30 and ("-" in t or "/" in t or "_" in t)
+
+
+def slug_title(t):
+    """'/documents/download/95165/javni-poziv-za-dodjelu...' -> 'Javni poziv za dodjelu...'"""
+    parts = [p for p in re.split(r"[/?#]", t) if p]
+    s = parts[-1] if parts else t
+    s = re.sub(r"\.(pdf|docx?|html?|php)$", "", s, flags=re.I)
+    s = re.sub(r"^\d+[-_]+", "", s)
+    s = re.sub(r"[-_]+", " ", s).strip()
+    return s[:1].upper() + s[1:] if s else t
+
+
 def from_html(url, soup, src):
-    out, seen_links = [], set()
+    """Vadi pozive iz HTML stranice.
+    - standardno: link ciji tekst sadrzi kljucnu rijec
+    - mode: context  -> naslov se trazi i u redu/bloku oko linka
+    - link_obrazac   -> prihvata svaki link cija adresa odgovara obrascu (za agregatore
+                        ciji naslovi ne sadrze nase kljucne rijeci, npr. na engleskom)
+    Isti poziv sa vise linkova (poziv, obrazac, pravilnik) javlja se samo jednom."""
+    out, seen_links, seen_titles = [], set(), set()
     context_mode = src.get("mode") == "context"
+    rx = re.compile(src["link_obrazac"]) if src.get("link_obrazac") else None
     for a in soup.find_all("a", href=True):
-        text = a.get_text(" ", strip=True)
-        if not matches(text):
+        href = a["href"].strip()
+        if href.startswith(("mailto:", "tel:", "#", "javascript:")):
+            continue
+        link = urljoin(url, href)
+        text = a.get_text(" ", strip=True) or (a.get("title") or "").strip()
+        if text and looks_like_path(text):
+            text = (context_title(a) if context_mode else None) or slug_title(text)
+
+        if rx:
+            if not rx.search(link) or len(text) < 5 or any(n in norm(text) for n in NEGATIVE):
+                continue
+        elif not matches(text):
             if not context_mode:
                 continue
             text = context_title(a)
             if not text:
                 continue
-        link = urljoin(url, a["href"])
-        if link in seen_links or link.startswith(("mailto:", "tel:", "#", "javascript:")):
+
+        nt = norm(text)
+        if link in seen_links or nt in seen_titles:
             continue
         seen_links.add(link)
+        seen_titles.add(nt)
         out.append(item(text, link, src, "html"))
     return out[:40]
 
@@ -235,7 +288,9 @@ def scan(src):
     r = get(url)
     soup = BeautifulSoup(r.content, "html.parser") if r else None
 
-    feed_url, fp = discover_feed(url, soup)
+    # Izvori sa obrascem linka (agregatori) citaju se iskljucivo iz HTML-a
+    use_feed = not src.get("link_obrazac") and src.get("rss", True) is not False
+    feed_url, fp = discover_feed(url, soup) if use_feed else (None, None)
     if fp:
         items = from_feed(fp, src)
         log(f"     RSS: {feed_url} ({len(items)} relevantnih)")
