@@ -7,6 +7,7 @@
   "https://fmoit.gov.ba/",
   "https://fmrpo.gov.ba/category/javni-natjecajikonkursi/",
   "https://fzofbih.org.ba/kategorija/javni-konkursi/",
+  "https://interreg-hr-ba-me.eu/",
   "https://javnipozivi.fmrpo.gov.ba/",
   "https://konto-ba.com/category/javni-pozivi-fzz/",
   "https://mg-zzh.com/category/aktualnosti/novosti/",
@@ -719,7 +720,7 @@
    "state": "ok",
    "since": "2026-11-09",
    "days": 1,
-   "count": 11,
+   "count": 10,
    "reason": "",
    "last_reachable": "2026-11-09",
    "last_items": "2026-11-09"
@@ -880,7 +881,7 @@
    "state": "ok",
    "since": "2026-11-09",
    "days": 1,
-   "count": 1,
+   "count": 2,
    "reason": "",
    "last_reachable": "2026-11-09",
    "last_items": "2026-11-09"
@@ -935,7 +936,7 @@
    "state": "ok",
    "since": "2026-11-09",
    "days": 1,
-   "count": 3,
+   "count": 1,
    "reason": "",
    "last_reachable": "2026-11-09",
    "last_items": "2026-11-09"
@@ -952,11 +953,13 @@
   "https://interreg-hr-ba-me.eu/": {
    "name": "Interreg IPA Hrvatska–BiH–Crna Gora",
    "url": "https://interreg-hr-ba-me.eu/",
-   "state": "down",
+   "state": "ok",
    "since": "2026-11-09",
    "days": 1,
-   "count": 0,
-   "reason": "greska pri pristupu (ReadTimeout)"
+   "count": 1,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
   },
   "https://bhgrant.ba/firme": {
    "name": "BH Grant – registar poziva za firme",
@@ -1827,5 +1830,25 @@
   "source": "EU Fondovi i Konkursi – BiH",
   "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
   "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.ilijas.ba/index.php/javni-pozivi/javni-poziv-korisnicima-nekretnina-u-katastarskim-opcinama-podlipnik-rakova-noga-i-taracin-do": {
+  "title": "Javni poziv korisnicima nekretnina u katastarskim općinama Podlipnik, Rakova Noga i Taračin Do",
+  "source": "Općina Ilijaš",
+  "src_url": "https://www.ilijas.ba/index.php/javni-pozivi",
+  "first_seen": "09.11.2026 15:47",
+  "notified_on": "2026-11-09"
+ },
+ "https://www.vladahbz.com/ministarstvo-financija-objavilo-javni-poziv-za-izvansudsku-nagodbu-s-imateljima-pravomocnih-sudskih-odluka-2": {
+  "title": "Ministarstvo financija objavilo Javni poziv za izvansudsku nagodbu s imateljima pravomoćnih sudskih odluka",
+  "source": "Kanton 10 (HBŽ) – Ministarstvo gospodarstva",
+  "src_url": "https://www.vladahbz.com/ministarstvo-gospodarstva/aktivnosti-ministarstva/",
+  "first_seen": "09.11.2026 15:47",
+  "notified_on": "2026-11-09"
+ },
+ "https://interreg-hr-ba-me.eu/2nd-call-for-proposals-implementation-workshops-held-in-doboj-vinkovci-budva-and-mostar": {
+  "title": "2nd Call for Proposals: Implementation Workshops Held in Doboj, Vinkovci, Budva and Mostar",
+  "source": "Interreg IPA Hrvatska–BiH–Crna Gora",
+  "src_url": "https://interreg-hr-ba-me.eu/",
+  "first_seen": "09.11.2026 15:47"
  }
 }
