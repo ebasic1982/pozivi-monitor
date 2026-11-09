@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Monitor javnih poziva za MSP u FBiH  (verzija 3.1)
+Monitor javnih poziva za MSP u FBiH  (verzija 3.2)
 
 Radi u tri koraka:
   1) Za svaki izvor trazi RSS feed (prvo feed kategorije, pa opsti), a ako ga nema
@@ -10,6 +10,13 @@ Radi u tri koraka:
 
 Novi ili izmijenjeni izvor se prvi put upisuje "tiho" (bez obavjestenja),
 pa dodavanje izvora u sources.yaml ne izaziva poplavu starih poziva.
+
+Pracenje ispravnosti izvora (od verzije 3.2):
+  - NEDOSTUPAN: stranica vraca gresku DOWN_DAYS dana zaredom -> upozorenje
+  - BEZ STAVKI: stranica radi, ali nijedan poziv nije prepoznat SILENT_DAYS dana
+    zaredom (najcesce redizajn sajta) -> upozorenje
+  - Kad izvor ponovo proradi -> obavjestenje o oporavku
+  - Svakog ponedjeljka: sedmicni izvjestaj o stanju svih izvora
 
 Obavjestenja: email (SMTP) i/ili Telegram. Podesavanje preko GitHub secreta.
 Probno slanje: pokretanje workflowa sa ukljucenom opcijom "test_mail".
@@ -42,6 +49,24 @@ SEEN_PATH = os.path.join(ROOT, "seen.json")
 SOURCES_PATH = os.path.join(ROOT, "sources.yaml")
 PAGE_PATH = os.path.join(ROOT, "docs", "index.html")
 SRC_KEY = "__sources__"   # spisak izvora koji su vec inicijalizovani
+HEALTH_KEY = "__health__" # stanje ispravnosti po izvoru
+META_KEY = "__meta__"     # datum zadnjeg sedmicnog izvjestaja i sl.
+
+DOWN_DAYS = 3     # upozorenje kad je izvor nedostupan ovoliko dana zaredom
+SILENT_DAYS = 7   # upozorenje kad izvor radi, ali bez ijednog poziva, ovoliko dana
+REPORT_WEEKDAY = 1  # ponedjeljak (ISO: 1 = ponedjeljak ... 7 = nedjelja)
+
+try:
+    from zoneinfo import ZoneInfo
+    TZ = ZoneInfo("Europe/Sarajevo")
+except Exception:          # ako vremenska zona nije dostupna, koristi se UTC
+    TZ = None
+
+LAST_ERR = {"msg": ""}     # razlog zadnje greske pri pristupu (za upozorenja)
+
+
+def now_local():
+    return dt.datetime.now(TZ) if TZ else dt.datetime.utcnow()
 
 HEADERS = {
     "User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -105,14 +130,18 @@ def get(url, quiet=False):
                 if not quiet:
                     log("     ! SSL certifikat neispravan - pokusavam bez provjere")
                 continue
+            if not quiet:
+                LAST_ERR["msg"] = "SSL greska"
             return None
         except Exception as e:
             if not quiet:
+                LAST_ERR["msg"] = f"greska pri pristupu ({type(e).__name__})"
                 log(f"     ! greska pri pristupu: {type(e).__name__}")
             return None
         if r.status_code == 200:
             return r
         if not quiet:
+            LAST_ERR["msg"] = f"HTTP {r.status_code}"
             log(f"     ! server vratio HTTP {r.status_code}")
         return None
     return None
@@ -198,9 +227,11 @@ def from_html(url, soup, src):
 
 
 def scan(src):
-    """Vraca (stavke, dostupan). Izvor je 'dostupan' ako se stranica ili feed ucitao."""
+    """Vraca (stavke, dostupan, razlog). Izvor je 'dostupan' ako se stranica ili feed
+    ucitao; 'razlog' opisuje gresku kad nije."""
     url = src["url"]
     log(f"  -> {src['name']}")
+    LAST_ERR["msg"] = ""
     r = get(url)
     soup = BeautifulSoup(r.content, "html.parser") if r else None
 
@@ -209,15 +240,15 @@ def scan(src):
         items = from_feed(fp, src)
         log(f"     RSS: {feed_url} ({len(items)} relevantnih)")
         if items:
-            return items, True
+            return items, True, ""
     if soup:
         items = from_html(url, soup, src)
         log(f"     HTML ({len(items)} relevantnih)")
-        return items, True
+        return items, True, ""
     if fp:
-        return [], True
+        return [], True, ""
     log("     preskoceno (nedostupno)")
-    return [], False
+    return [], False, LAST_ERR["msg"] or "nepoznata greska"
 
 
 def key(it):
@@ -355,8 +386,10 @@ def render(items, when, heading):
     return "\n".join(plain), "".join(h)
 
 
-def write_page(new, found, when):
+def write_page(new, found, when, seen=None, sources=None):
     parts = []
+    if seen is not None and sources:
+        parts.append("<h2 style='color:#1F4E79'>Stanje izvora</h2>" + health_table(seen, sources))
     if new:
         parts.append(render(new, when, f"Novo u zadnjem prolazu ({len(new)})")[1])
     else:
@@ -375,10 +408,242 @@ padding:0 1rem;color:#222;line-height:1.5}}a{{color:#1F4E79}}</style></head><bod
 </body></html>""")
 
 
+# ---------------- ispravnost izvora ----------------
+
+STATE_LABEL = {"ok": "Ispravan", "down": "Nedostupan", "silent": "Bez stavki",
+               "off": "Praćenje isključeno"}
+STATE_COLOR = {"ok": "#2E7D32", "down": "#C62828", "silent": "#C55A11", "off": "#777777"}
+
+
+def _d(s):
+    return dt.date.fromisoformat(s) if s else None
+
+
+def _fmt(s):
+    d = _d(s)
+    return d.strftime("%d.%m.%Y") if d else "—"
+
+
+def update_health(seen, sources, results, today):
+    """Azurira stanje svakog izvora i vraca (upozorenja, oporavci).
+    results: {url: {"count": n, "ok": bool, "reason": str}} za ovaj prolaz.
+    Dani se broje kalendarski, pa vise rucnih pokretanja u istom danu ne ubrzava prag."""
+    health = seen.setdefault(HEALTH_KEY, {})
+    urls = {s["url"] for s in sources}
+    for u in list(health):                      # izvori uklonjeni iz sources.yaml
+        if u not in urls:
+            del health[u]
+
+    t = today.isoformat()
+    alerts, recoveries = [], []
+    for src in sources:
+        u = src["url"]
+        h = health.setdefault(u, {})
+        h["name"] = src["name"]
+        h["url"] = u
+
+        if src.get("health") is False:
+            h.update(state="off", since=h.get("since") or t, days=0, reason="", count=0)
+            h["alerted"] = None
+            continue
+
+        # Poznat kvar: smatra se da je korisnik vec obavijesten (nema upozorenja),
+        # ali kad izvor proradi - stize obavjestenje o oporavku.
+        if src.get("poznat_kvar") and "alerted" not in h:
+            h["alerted"] = "down"
+
+        r = results.get(u) or {"count": 0, "ok": False, "reason": "greska u skripti"}
+        if r["ok"] and r["count"] > 0:
+            state = "ok"
+        elif r["ok"]:
+            state = "silent"
+        else:
+            state = "down"
+
+        if state != h.get("state"):
+            h["state"] = state
+            h["since"] = t
+        h["days"] = (today - _d(h["since"])).days + 1
+        h["count"] = r["count"]
+        h["reason"] = r["reason"] if state == "down" else ""
+        if r["ok"]:
+            h["last_reachable"] = t
+        if state == "ok":
+            h["last_items"] = t
+
+        alerted = h.get("alerted")
+        if state == "ok":
+            if alerted:
+                recoveries.append(u)
+            continue
+        limit = DOWN_DAYS if state == "down" else int(src.get("tihi_dani", SILENT_DAYS))
+        if h["days"] >= limit and alerted != state:
+            alerts.append(u)
+    return alerts, recoveries
+
+
+def health_table(seen, sources):
+    health = seen.get(HEALTH_KEY, {})
+    rows = []
+    for src in sources:
+        h = health.get(src["url"], {})
+        st = h.get("state", "ok")
+        label = STATE_LABEL.get(st, st)
+        if st in ("down", "silent") and h.get("days"):
+            label += f" ({h['days']}. dan)"
+        if st == "down" and h.get("reason"):
+            label += f" – {h['reason']}"
+        if src.get("poznat_kvar") and st == "down":
+            label += " – poznat kvar"
+        rows.append(
+            f"<tr><td style='padding:4px 8px;border-bottom:1px solid #eee'>"
+            f"<a href=\"{html.escape(src['url'])}\">{html.escape(src['name'])}</a></td>"
+            f"<td style='padding:4px 8px;border-bottom:1px solid #eee;"
+            f"color:{STATE_COLOR.get(st, '#222')};font-weight:bold'>{html.escape(label)}</td>"
+            f"<td style='padding:4px 8px;border-bottom:1px solid #eee;text-align:center'>"
+            f"{h.get('count', '—')}</td>"
+            f"<td style='padding:4px 8px;border-bottom:1px solid #eee'>"
+            f"{_fmt(h.get('last_items'))}</td></tr>")
+    return ("<table style='border-collapse:collapse;font-size:14px'>"
+            "<tr style='background:#1F4E79;color:#fff'>"
+            "<th style='padding:6px 8px;text-align:left'>Izvor</th>"
+            "<th style='padding:6px 8px;text-align:left'>Stanje</th>"
+            "<th style='padding:6px 8px'>Pronađeno danas</th>"
+            "<th style='padding:6px 8px;text-align:left'>Zadnji put sa pozivima</th></tr>"
+            + "".join(rows) + "</table>")
+
+
+def health_counts(seen, sources):
+    health = seen.get(HEALTH_KEY, {})
+    c = {"ok": 0, "down": 0, "silent": 0, "off": 0}
+    for src in sources:
+        c[health.get(src["url"], {}).get("state", "ok")] += 1
+    return c
+
+
+def send_health_alert(seen, alerts, recoveries, when):
+    """Jedan mail za sva upozorenja i oporavke iz ovog prolaza.
+    Stanje 'alerted' se upisuje SAMO ako je slanje uspjelo - inace se ponavlja sutra."""
+    health = seen[HEALTH_KEY]
+    parts = []
+    if alerts:
+        parts.append(f"<h2 style='color:#C62828'>Izvori koji ne rade ({len(alerts)})</h2><ul>")
+        for u in alerts:
+            h = health[u]
+            if h["state"] == "down":
+                what = (f"Stranica je nedostupna već <b>{h['days']} dana</b> "
+                        f"(razlog: {html.escape(h.get('reason') or 'nepoznat')}). "
+                        "Najčešće je to privremeni pad servera ili blokada automatskih posjeta.")
+            else:
+                what = (f"Stranica radi, ali već <b>{h['days']} dana</b> nije prepoznat nijedan "
+                        "poziv. Najčešće to znači da je sajt redizajniran pa skripta više ne "
+                        "prepoznaje objave; rjeđe da institucija zaista nema objava.")
+            parts.append(f"<li style='margin:8px 0'><b><a href=\"{html.escape(u)}\">"
+                         f"{html.escape(h['name'])}</a></b><br>{what}</li>")
+        parts.append("</ul><p><b>Šta uraditi:</b> otvori stranicu ručno. Ako ima novih poziva "
+                     "koje monitor nije javio, izvoru treba popraviti pravilo čitanja. "
+                     "Dok se ne popravi, taj izvor prati ručno.</p>")
+    if recoveries:
+        parts.append(f"<h2 style='color:#2E7D32'>Izvori koji ponovo rade ({len(recoveries)})</h2><ul>")
+        for u in recoveries:
+            parts.append(f"<li><a href=\"{html.escape(u)}\">{html.escape(health[u]['name'])}</a>"
+                         " – ponovo se uredno čita.</li>")
+        parts.append("</ul>")
+    body = (f"<p><i>{when}</i></p>" + "".join(parts) +
+            "<hr><p><small style='color:#777'>Automatsko upozorenje monitora javnih poziva. "
+            "Upozorenje za isti kvar stiže samo jednom.</small></p>")
+
+    if alerts:
+        names = ", ".join(health[u]["name"] for u in alerts[:2])
+        more = f" i još {len(alerts) - 2}" if len(alerts) > 2 else ""
+        subject = f"[Upozorenje] Izvor ne radi: {names}{more}"
+    else:
+        names = ", ".join(health[u]["name"] for u in recoveries[:2])
+        subject = f"[Monitor] Izvor ponovo radi: {names}"
+
+    plain = re.sub(r"<(?!/?(b|a|i)\b)[^>]+>", "\n", body)
+    ok = send_email(subject, body)
+    ok = send_telegram(plain) or ok
+    if ok:
+        for u in alerts:
+            health[u]["alerted"] = health[u]["state"]
+        for u in recoveries:
+            health[u]["alerted"] = None
+        log("  Upozorenje o izvorima: POSLANO")
+    else:
+        log("  Upozorenje o izvorima NIJE poslano - pokusat ce se ponovo u sljedecem prolazu.")
+    return ok
+
+
+def weekly_due(seen, today):
+    """Izvjestaj ide ponedjeljkom, jednom sedmicno. Ako ponedjeljak bude preskocen
+    (GitHub ponekad preskoci zakazano pokretanje), ide prvi sljedeci dan."""
+    last = _d(seen.get(META_KEY, {}).get("last_weekly"))
+    if last and last.isocalendar()[:2] == today.isocalendar()[:2]:
+        return False
+    if today.isoweekday() == REPORT_WEEKDAY:
+        return True
+    return last is None or (today - last).days >= 8
+
+
+def recent_notified(seen, today, days=7):
+    out = []
+    for k, v in seen.items():
+        if k.startswith("__") or not isinstance(v, dict) or not v.get("notified_on"):
+            continue
+        if (today - _d(v["notified_on"])).days < days:
+            out.append({"title": v.get("title", k), "link": k, "source": v.get("source", ""),
+                        "date": v["notified_on"]})
+    return sorted(out, key=lambda x: x["date"], reverse=True)
+
+
+def send_weekly_report(seen, sources, today, when):
+    c = health_counts(seen, sources)
+    problems = c["down"] + c["silent"]
+    if problems == 0:
+        status = (f"<p style='color:#2E7D32'><b>Monitor radi ispravno.</b> "
+                  f"Svi aktivni izvori ({c['ok']}) se uredno čitaju.</p>")
+    else:
+        status = (f"<p><b>Monitor radi.</b> Ispravno: {c['ok']} · "
+                  f"<span style='color:#C62828'>nedostupno: {c['down']}</span> · "
+                  f"<span style='color:#C55A11'>bez stavki: {c['silent']}</span></p>")
+
+    rec = recent_notified(seen, today)
+    if rec:
+        lst = "".join(
+            f"<li style='margin:4px 0'>{_fmt(r['date'])} – <a href=\"{html.escape(r['link'])}\">"
+            f"{html.escape(r['title'])}</a><br><small style='color:#777'>"
+            f"{html.escape(r['source'])}</small></li>" for r in rec[:30])
+        calls = f"<h3 style='color:#2E75B6'>Novi pozivi javljeni u zadnjih 7 dana ({len(rec)})</h3><ul>{lst}</ul>"
+    else:
+        calls = ("<h3 style='color:#2E75B6'>Novi pozivi javljeni u zadnjih 7 dana</h3>"
+                 "<p>Ove sedmice nije bilo novih poziva na praćenim izvorima.</p>")
+
+    body = (f"<h2 style='color:#1F4E79'>Sedmični izvještaj – monitor javnih poziva</h2>"
+            f"<p><i>{when}</i></p>{status}"
+            f"<h3 style='color:#2E75B6'>Stanje izvora</h3>{health_table(seen, sources)}"
+            f"{calls}<hr><p><small style='color:#777'>Ovaj izvještaj stiže svakog ponedjeljka. "
+            "Ako ga jednog ponedjeljka ne dobiješ, monitor vjerovatno nije radio – "
+            "provjeri tab Actions u GitHubu.</small></p>")
+    subject = f"[Sedmični izvještaj] Monitor javnih poziva – {today.strftime('%d.%m.%Y')}"
+    plain = (f"<b>Sedmični izvještaj</b> – {when}\nIspravno: {c['ok']}, nedostupno: "
+             f"{c['down']}, bez stavki: {c['silent']}\nNovih poziva u 7 dana: {len(rec)}")
+    ok = send_email(subject, body)
+    ok = send_telegram(plain) or ok
+    if ok:
+        seen.setdefault(META_KEY, {})["last_weekly"] = today.isoformat()
+        log("  Sedmicni izvjestaj: POSLANO")
+    else:
+        log("  Sedmicni izvjestaj NIJE poslan - pokusat ce se ponovo u sljedecem prolazu.")
+    return ok
+
+
 # ---------------- glavni tok ----------------
 
 def main():
-    when = dt.datetime.now().strftime("%d.%m.%Y %H:%M")
+    now = now_local()
+    when = now.strftime("%d.%m.%Y %H:%M")
+    today = now.date()
     test_mail = os.getenv("TEST_MAIL", "").strip().lower() == "true"
 
     with open(SOURCES_PATH, encoding="utf-8") as f:
@@ -390,22 +655,23 @@ def main():
     url_by_name = {s["name"]: s["url"] for s in sources}
     initialized = set()
     for k, v in seen.items():
-        if k == SRC_KEY or not isinstance(v, dict):
+        if k.startswith("__") or not isinstance(v, dict):
             continue
         u = v.get("src_url") or url_by_name.get(v.get("source"))
         if u:
             initialized.add(u)
 
     log(f"Skeniram {len(sources)} izvora...")
-    found, reachable = [], []
+    found, results = [], {}
     for src in sources:
         try:
-            items, ok = scan(src)
+            items, ok, reason = scan(src)
             found += items
-            if ok:
-                reachable.append(src["url"])
+            results[src["url"]] = {"count": len(items), "ok": ok, "reason": reason}
         except Exception as e:
             log(f"  !! {src.get('name')}: {type(e).__name__}: {e}")
+            results[src["url"]] = {"count": 0, "ok": False,
+                                   "reason": f"greska u skripti ({type(e).__name__})"}
         time.sleep(1)
 
     new, silent = [], 0
@@ -424,11 +690,22 @@ def main():
     fresh = [u for u in with_items if u not in initialized]
     seen[SRC_KEY] = sorted(initialized | with_items)
 
+    alerts, recoveries = update_health(seen, sources, results, today)
+
     log("")
     log(f"Ukupno relevantnih: {len(found)} | Novih za obavjestenje: {len(new)}")
     if fresh:
         log(f"Novi/izmijenjeni izvori upisani bez obavjestenja: {len(fresh)} ({silent} stavki)")
-    write_page(new, found, when)
+    c = health_counts(seen, sources)
+    log(f"Stanje izvora: ispravno {c['ok']} | nedostupno {c['down']} | "
+        f"bez stavki {c['silent']} | iskljuceno {c['off']}")
+    for src in sources:
+        h = seen[HEALTH_KEY].get(src["url"], {})
+        if h.get("state") in ("down", "silent"):
+            limit = DOWN_DAYS if h["state"] == "down" else int(src.get("tihi_dani", SILENT_DAYS))
+            log(f"  - {src['name']}: {STATE_LABEL[h['state']]}, {h['days']}. dan "
+                f"(upozorenje od {limit}. dana){' – ' + h['reason'] if h.get('reason') else ''}")
+    write_page(new, found, when, seen, sources)
 
     if test_mail:
         log("")
@@ -439,6 +716,8 @@ def main():
             plain, body = render(sample, when, heading)
         else:
             plain = body = f"<b>{heading}</b><br>Monitor radi, ali trenutno nema pronađenih stavki."
+        body += ("<h3 style='color:#2E75B6'>Trenutno stanje izvora</h3>"
+                 + health_table(seen, sources))
         ok = send_email(f"[TEST] Monitor javnih poziva – {when}", body)
         ok = send_telegram(plain) or ok
         if not ok:
@@ -450,13 +729,26 @@ def main():
         plain, body = render(new, when, f"Novi javni pozivi ({len(new)})")
         ok = send_email(f"[Pozivi] {len(new)} novih javnih poziva – {when}", body)
         ok = send_telegram(plain) or ok
-        if not ok:
+        if ok:
+            for it in new:
+                seen[key(it)]["notified_on"] = today.isoformat()
+        else:
             # Ne upisujemo ih kao vidjene - pokusat ce se ponovo u sljedecem prolazu
             for it in new:
                 seen.pop(key(it), None)
             log(f"  Obavjestenje NIJE poslano - {len(new)} novih poziva ostaje za sljedeci prolaz.")
     elif not test_mail:
         log("Nema novih poziva.")
+
+    if alerts or recoveries:
+        log("")
+        log(f"Saljem upozorenje o izvorima (ne rade: {len(alerts)}, oporavljeni: {len(recoveries)}):")
+        send_health_alert(seen, alerts, recoveries, when)
+
+    if weekly_due(seen, today):
+        log("")
+        log("Saljem sedmicni izvjestaj:")
+        send_weekly_report(seen, sources, today, when)
 
     with open(SEEN_PATH, "w", encoding="utf-8") as f:
         json.dump(seen, f, ensure_ascii=False, indent=1)

@@ -3,6 +3,13 @@
 # Izvor se prvi put upisuje BEZ obavještenja (nema poplave starih poziva).
 # "tier" služi samo za grupisanje u obavještenju.
 # "mode: context" = naslov poziva nije u samom linku, nego pored njega (traži se u redu).
+#
+# Praćenje ispravnosti (verzija 3.2):
+#   "poznat_kvar: true" = izvor trenutno ne radi i to već znamo -> bez upozorenja,
+#                          ali kad proradi, stiže obavještenje o oporavku.
+#   "tihi_dani: 21"     = poseban prag (u danima) za upozorenje "bez stavki", za izvore
+#                          čiji opšti RSS ima malo poziva pa prirodno zna biti prazan.
+#   "health: false"     = potpuno isključuje praćenje ispravnosti za taj izvor.
 
 - name: "FMRPO – Javni natječaji/Konkursi"
   tier: "Federalni"
@@ -16,6 +23,7 @@
 - name: "Razvojna banka FBiH"
   tier: "Federalni"
   url: "https://rbfbih.ba/"
+  tihi_dani: 21
 
 - name: "Ministarstvo privrede KS – Konkursi / Javni pozivi"
   tier: "Kanton Sarajevo"
@@ -24,6 +32,7 @@
 - name: "JU Služba za zapošljavanje KS"
   tier: "Kanton Sarajevo"
   url: "https://szks.ba/javni-pozivi/"
+  tihi_dani: 21
 
 - name: "Općina Novi Grad Sarajevo"
   tier: "Općine KS"
@@ -34,10 +43,12 @@
   url: "https://zdk.ba/ministarstvo-za-privredu-javni-pozivi"
 
 # HNK trenutno odbija automatske posjete sa GitHub servera (HTTP 403).
-# Ostavljeno u listi: ako ih odblokiraju, izvor proradi sam, bez ikakve izmjene.
+# Ostavljeno u listi: ako ih odblokiraju, izvor proradi sam, bez ikakve izmjene,
+# a stiže i obavještenje o oporavku.
 - name: "HNK – Ministarstvo privrede"
   tier: "Ostali kantoni"
   url: "https://privredahnk.gov.ba/"
+  poznat_kvar: true
 
 - name: "TK – Ministarstvo privrede"
   tier: "Ostali kantoni"
