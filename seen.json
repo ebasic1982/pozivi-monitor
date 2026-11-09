@@ -1,16 +1,33 @@
 {
  "__sources__": [
+  "https://bhgrant.ba/firme",
   "https://bpkg.gov.ba/kategorija/pozivi-tenderi",
   "https://businessplansstartup.com/",
+  "https://eui-zzh.ba/",
+  "https://fmoit.gov.ba/",
   "https://fmrpo.gov.ba/category/javni-natjecajikonkursi/",
+  "https://fzofbih.org.ba/kategorija/javni-konkursi/",
   "https://javnipozivi.fmrpo.gov.ba/",
+  "https://konto-ba.com/category/javni-pozivi-fzz/",
+  "https://mg-zzh.com/category/aktualnosti/novosti/",
   "https://mp.ks.gov.ba/aktuelo/konkursi",
   "https://mptk.gov.ba/",
+  "https://opcinailidza.ba/javni-pozivi/",
   "https://privredahnk.gov.ba/",
   "https://rbfbih.ba/",
+  "https://starigrad.ba/kategorija-jp/javni-poziv/",
   "https://szks.ba/javni-pozivi/",
   "https://vladausk.ba/v4/index/ministarstvo-privrede/4?vrsta=4",
+  "https://vogosca.ba/category/javni_pozivi/",
+  "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "https://www.ilijas.ba/index.php/javni-pozivi",
+  "https://www.kfbih.com/aktuelnosti-iz-komore/",
   "https://www.novigradsarajevo.ba/cat/news/invitation/",
+  "https://www.sarajevo.ba/hr/javni-pozivi-konkursi-i-oglasi",
+  "https://www.trnovo.ba/",
+  "https://www.vladahbz.com/ministarstvo-gospodarstva/aktivnosti-ministarstva/",
+  "https://www.zupanijaposavska.ba/category/javni-dokumenti/javni-pozivi/",
   "https://zdk.ba/ministarstvo-za-privredu-javni-pozivi"
  ],
  "https://fmrpo.gov.ba/ministar-mijatovic-potpisuje-ugovore-o-implementaciji-poticajnih-finansijskih-sredstava-u-okviru-programa-podrska-sektoru-male-privrede-s-ciljem-jacanja-konkurentnosti": {
@@ -635,7 +652,7 @@
    "state": "ok",
    "since": "2026-11-09",
    "days": 1,
-   "count": 18,
+   "count": 17,
    "reason": "",
    "last_reachable": "2026-11-09",
    "last_items": "2026-11-09"
@@ -728,9 +745,1087 @@
    "reason": "",
    "last_reachable": "2026-11-09",
    "last_items": "2026-11-09"
+  },
+  "https://fzofbih.org.ba/kategorija/javni-konkursi/": {
+   "name": "Fond za zaštitu okoliša FBiH – Javni konkursi",
+   "url": "https://fzofbih.org.ba/kategorija/javni-konkursi/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 11,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://fmoit.gov.ba/": {
+   "name": "Federalno ministarstvo okoliša i turizma",
+   "url": "https://fmoit.gov.ba/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 3,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://konto-ba.com/category/javni-pozivi-fzz/": {
+   "name": "FZZZ pozivi (konto-ba.com)",
+   "url": "https://konto-ba.com/category/javni-pozivi-fzz/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 7,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://www.kfbih.com/aktuelnosti-iz-komore/": {
+   "name": "Privredna komora FBiH – Aktuelnosti",
+   "url": "https://www.kfbih.com/aktuelnosti-iz-komore/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 1,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://www.sarajevo.ba/hr/javni-pozivi-konkursi-i-oglasi": {
+   "name": "Grad Sarajevo – Javni pozivi, konkursi i oglasi",
+   "url": "https://www.sarajevo.ba/hr/javni-pozivi-konkursi-i-oglasi",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 5,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://okks.ba/": {
+   "name": "Obrtnička komora KS",
+   "url": "https://okks.ba/",
+   "state": "silent",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 0,
+   "reason": "",
+   "last_reachable": "2026-11-09"
+  },
+  "https://www.centar.ba/javni-pozivi-i-konkursi": {
+   "name": "Općina Centar Sarajevo",
+   "url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 40,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://starigrad.ba/kategorija-jp/javni-poziv/": {
+   "name": "Općina Stari Grad Sarajevo",
+   "url": "https://starigrad.ba/kategorija-jp/javni-poziv/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 1,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://novosarajevo.ba/javni-pozivi/aktuelni-javni-pozivi/": {
+   "name": "Općina Novo Sarajevo",
+   "url": "https://novosarajevo.ba/javni-pozivi/aktuelni-javni-pozivi/",
+   "state": "down",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 0,
+   "reason": "HTTP 404"
+  },
+  "https://opcinailidza.ba/javni-pozivi/": {
+   "name": "Općina Ilidža",
+   "url": "https://opcinailidza.ba/javni-pozivi/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 12,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://vogosca.ba/category/javni_pozivi/": {
+   "name": "Općina Vogošća",
+   "url": "https://vogosca.ba/category/javni_pozivi/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 7,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://hadzici.ba/obavijesti/": {
+   "name": "Općina Hadžići",
+   "url": "https://hadzici.ba/obavijesti/",
+   "state": "silent",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 0,
+   "reason": "",
+   "last_reachable": "2026-11-09"
+  },
+  "https://www.ilijas.ba/index.php/javni-pozivi": {
+   "name": "Općina Ilijaš",
+   "url": "https://www.ilijas.ba/index.php/javni-pozivi",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 1,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://www.trnovo.ba/": {
+   "name": "Općina Trnovo",
+   "url": "https://www.trnovo.ba/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 1,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://www.zupanijaposavska.ba/category/javni-dokumenti/javni-pozivi/": {
+   "name": "Posavski kanton – Javni pozivi",
+   "url": "https://www.zupanijaposavska.ba/category/javni-dokumenti/javni-pozivi/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 3,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://mg-zzh.com/category/aktualnosti/novosti/": {
+   "name": "ZHK – Ministarstvo gospodarstva",
+   "url": "https://mg-zzh.com/category/aktualnosti/novosti/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 3,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://eui-zzh.ba/": {
+   "name": "ZHK – Ured Vlade za europske integracije",
+   "url": "https://eui-zzh.ba/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 3,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://www.vladahbz.com/ministarstvo-gospodarstva/aktivnosti-ministarstva/": {
+   "name": "Kanton 10 (HBŽ) – Ministarstvo gospodarstva",
+   "url": "https://www.vladahbz.com/ministarstvo-gospodarstva/aktivnosti-ministarstva/",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 3,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://www.undp.org/bs/bosnia-herzegovina/news": {
+   "name": "UNDP BiH – Vijesti i javni pozivi",
+   "url": "https://www.undp.org/bs/bosnia-herzegovina/news",
+   "state": "down",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 0,
+   "reason": "HTTP 403"
+  },
+  "https://interreg-hr-ba-me.eu/": {
+   "name": "Interreg IPA Hrvatska–BiH–Crna Gora",
+   "url": "https://interreg-hr-ba-me.eu/",
+   "state": "down",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 0,
+   "reason": "greska pri pristupu (ReadTimeout)"
+  },
+  "https://bhgrant.ba/firme": {
+   "name": "BH Grant – registar poziva za firme",
+   "url": "https://bhgrant.ba/firme",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 18,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html": {
+   "name": "EU Fondovi i Konkursi – BiH",
+   "url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+   "state": "ok",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 20,
+   "reason": "",
+   "last_reachable": "2026-11-09",
+   "last_items": "2026-11-09"
+  },
+  "https://www.opcinakupres.ba/naslovnica": {
+   "name": "Općina Kupres – prenosi pozive za firme",
+   "url": "https://www.opcinakupres.ba/naslovnica",
+   "state": "silent",
+   "since": "2026-11-09",
+   "days": 1,
+   "count": 0,
+   "reason": "",
+   "last_reachable": "2026-11-09"
   }
  },
  "__meta__": {
   "last_weekly": "2026-11-09"
+ },
+ "https://fzofbih.org.ba/2026/09/16/javni-poziv-za-dodjelu-sredstava-za-provodenje-mjera-energijske-efikasnosti-u-stambenim-objektima-za-2026-godinu-jp-ee-ss-2026": {
+  "title": "JAVNI POZIV za dodjelu sredstava za provođenje mjera energijske efikasnosti u stambenim objektima za 2026. godinu – JP EE SS 2026",
+  "source": "Fond za zaštitu okoliša FBiH – Javni konkursi",
+  "src_url": "https://fzofbih.org.ba/kategorija/javni-konkursi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://fzofbih.org.ba/2026/09/16/javni-poziv-za-dodjelu-sredstava-za-kupovinu-novih-elektricnih-vozila-za-2026-godinu-jp-ev-2026": {
+  "title": "JAVNI POZIV za dodjelu sredstava za kupovinu novih električnih vozila za 2026. godinu – JP EV 2026",
+  "source": "Fond za zaštitu okoliša FBiH – Javni konkursi",
+  "src_url": "https://fzofbih.org.ba/kategorija/javni-konkursi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://fzofbih.org.ba/2026/07/17/javni-konkurs-za-dodjelu-sredstava-za-realizaciju-projekata-iz-podrucja-energijske-efikasnosti-za-2026-godinu-jk-ee-2026": {
+  "title": "JAVNI KONKURS za dodjelu sredstava za realizaciju projekata iz područja  energijske efikasnosti za 2026. godinu – JK EE 2026",
+  "source": "Fond za zaštitu okoliša FBiH – Javni konkursi",
+  "src_url": "https://fzofbih.org.ba/kategorija/javni-konkursi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://fzofbih.org.ba/2026/04/02/javni-konkurs": {
+  "title": "JAVNI KONKURS za dodjelu sredstava za realizaciju programa, projekata i sličnih aktivnosti iz područja zaštite okoliša za 2026. godinu",
+  "source": "Fond za zaštitu okoliša FBiH – Javni konkursi",
+  "src_url": "https://fzofbih.org.ba/kategorija/javni-konkursi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://fzofbih.org.ba/2025/09/16/fond-za-zastitu-okolisa-fbih-otvorio-novi-javni-natjecaj-prilika-za-projekte-reciklaze-i-zastite-voda": {
+  "title": "Fond za zaštitu okoliša FBiH otvorio novi Javni natječaj – prilika za projekte reciklaže i zaštite voda",
+  "source": "Fond za zaštitu okoliša FBiH – Javni konkursi",
+  "src_url": "https://fzofbih.org.ba/kategorija/javni-konkursi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://fzofbih.org.ba/2025/04/01/javni-konkurs-za-dodjelu-sredstava-za-realizaciju-programa-projekata-i-slicnih-aktivnosti-iz-podrucja-zastite-okolisa-za-2025-godinu": {
+  "title": "JAVNI KONKURS za dodjelu sredstava za realizaciju programa, projekata i sličnih aktivnosti iz područja zaštite okoliša za 2025.godinu",
+  "source": "Fond za zaštitu okoliša FBiH – Javni konkursi",
+  "src_url": "https://fzofbih.org.ba/kategorija/javni-konkursi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://fzofbih.org.ba/2024/08/02/javni-poziv-za-dodjelu-sredstava-iz-budzetske-podrske-eu-za-provodjenje-mjera-energijske-efikasnosti-u-stambenim-objektima-jp-bpeu-ss-2024-1": {
+  "title": "JAVNI POZIV za dodjelu sredstava iz budžetske podrške EU za provođenje mjera energijske efikasnosti u stambenim objektima – JP BPEU SS 2024-1",
+  "source": "Fond za zaštitu okoliša FBiH – Javni konkursi",
+  "src_url": "https://fzofbih.org.ba/kategorija/javni-konkursi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://fzofbih.org.ba/2024/08/02/javni-poziv-za-dodjelu-sredstava-iz-budzetske-podrske-eu-za-provodjenje-mjera-energijske-efikasnosti-u-mikro-malim-i-srednjim-subjektima-male-privrede-za-2024-godinu-jp-bpeu-mmsp-2024-3": {
+  "title": "JAVNI POZIV za dodjelu sredstava iz budžetske podrške EU za provođenje mjera energijske efikasnosti u mikro, malim i srednjim subjektima male privrede za 2024. godinu  JP BPEU MMSP 2024-3",
+  "source": "Fond za zaštitu okoliša FBiH – Javni konkursi",
+  "src_url": "https://fzofbih.org.ba/kategorija/javni-konkursi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://fzofbih.org.ba/2024/05/15/javni-poziv-za-dodjelu-sredstava-iz-budzetske-podrske-eu-za-provodjenje-mjera-energijske-efikasnosti-u-mikro-malim-i-srednjim-preduzecima-za-2024-godinu-jp-bpeu-mmsp-2024-2": {
+  "title": "JAVNI POZIV za dodjelu sredstava iz budžetske podrške EU za provođenje mjera energijske  efikasnosti u mikro, malim i srednjim preduzećima za 2024. godinu  JP BPEU MMSP 2024-2",
+  "source": "Fond za zaštitu okoliša FBiH – Javni konkursi",
+  "src_url": "https://fzofbih.org.ba/kategorija/javni-konkursi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://fzofbih.org.ba/2024/04/06/javni-konkurs-za-dodjelu-sredstava-za-realizaciju-programa-projekata-i-slicnih-aktivnosti-iz-podrucja-zastite-okolisa-za-2024-godinu": {
+  "title": "JAVNI KONKURS za dodjelu sredstava za realizaciju programa, projekata i sličnih aktivnosti iz područja  zaštite okoliša za 2024. godinu",
+  "source": "Fond za zaštitu okoliša FBiH – Javni konkursi",
+  "src_url": "https://fzofbih.org.ba/kategorija/javni-konkursi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://fzofbih.org.ba/2024/02/15/jp-bpeu-mmsp-2024-1": {
+  "title": "JAVNI POZIV za dodjelu sredstava iz budžetske podrške EU za provođenje mjera energijske efikasnosti u mikro, malim i srednjim preduzećima za 2024. godinu JP BPEU MMSP 2024-1",
+  "source": "Fond za zaštitu okoliša FBiH – Javni konkursi",
+  "src_url": "https://fzofbih.org.ba/kategorija/javni-konkursi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://fmoit.gov.ba/javni-poziv-za-odabir-korisnika-neutrosenih-sredstava-po-programu-zastita-okolisa-i-prirode-i-upravljanje-otpadom-uz-unapredjenje-zivotne-sredine-na-ekonomskom-kodu-614100-tekuci-transferi-drugi": {
+  "title": "JAVNI POZIV za odabir korisnika neutrošenih sredstava, po Programu – Zaštita okoliša i prirode i upravljanje otpadom uz unapređenje životne sredine, na ekonomskom kodu 614100 – Tekući transferi drugim nivoima vlasti i fondovima – Akcioni plan Strategije okoliša, utvrđenih Budžetom Federacije Bosne i",
+  "source": "Federalno ministarstvo okoliša i turizma",
+  "src_url": "https://fmoit.gov.ba/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://fmoit.gov.ba/javni-poziv-za-prikupljanje-i-odabir-projekata-za-raspodjelu-sredstava-kapitalni-transferi-drugim-nivoima-vlasti-i-fondovima-transfer-za-razvoj-turizma-u-federaciji-bih-2": {
+  "title": "JAVNI POZIV za prikupljanje i odabir  projekata za raspodjelu sredstava „Kapitalni transferi drugim nivoima vlasti i fondovima – Transfer za razvoj turizma u Federaciji BiH“ za 2026. godinu",
+  "source": "Federalno ministarstvo okoliša i turizma",
+  "src_url": "https://fmoit.gov.ba/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://fmoit.gov.ba/obavjestenje-o-pozivu-za-dodjelu-bespovratnih-sredstava-za-projekte-ublazavanja-i-prilagodjavanja-na-klimatske-promjene-u-bih-za-2026-godinu": {
+  "title": "Obavještenje o Pozivu za dodjelu bespovratnih sredstava za projekte ublažavanja i prilagođavanja na klimatske promjene u BiH za 2026. godinu",
+  "source": "Federalno ministarstvo okoliša i turizma",
+  "src_url": "https://fmoit.gov.ba/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://konto-ba.com/2026/03/fzzz-ponovljeni-javni-poziv-program-sufinanciranja-zaposljavanja-2026": {
+  "title": "FZZZ – Ponovljeni javni poziv – Program sufinanciranja zapošljavanja 2026",
+  "source": "FZZZ pozivi (konto-ba.com)",
+  "src_url": "https://konto-ba.com/category/javni-pozivi-fzz/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://konto-ba.com/2025/03/federalni-zavod-za-zaposljavanje-javni-poziv": {
+  "title": "FEDERALNI ZAVOD ZA ZAPOŠLJAVANJE javni poziv",
+  "source": "FZZZ pozivi (konto-ba.com)",
+  "src_url": "https://konto-ba.com/category/javni-pozivi-fzz/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://konto-ba.com/2024/03/fzzz-novi-programi-sufinansiranja-zaposljavanja": {
+  "title": "FZZZ novi programi sufinansiranja zapošljavanja",
+  "source": "FZZZ pozivi (konto-ba.com)",
+  "src_url": "https://konto-ba.com/category/javni-pozivi-fzz/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://konto-ba.com/2023/12/program-sufinansiranja-zaposljavanja-roma-u-2023-godini": {
+  "title": "Program sufinansiranja zapošljavanja Roma u 2023. godini",
+  "source": "FZZZ pozivi (konto-ba.com)",
+  "src_url": "https://konto-ba.com/category/javni-pozivi-fzz/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://konto-ba.com/2022/03/federalni-zavod-za-zaposljavanje-2022-prijave-na-program-sufinansiranja": {
+  "title": "Federalni zavod za zapošljavanje – 2022 prijave na Program sufinansiranja",
+  "source": "FZZZ pozivi (konto-ba.com)",
+  "src_url": "https://konto-ba.com/category/javni-pozivi-fzz/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://konto-ba.com/2020/02/obavijest-poslodavcima-za-program-sufinanciranja-zaposljavanja-2020": {
+  "title": "Obavijest poslodavcima za Program sufinanciranja zapošljavanja 2020",
+  "source": "FZZZ pozivi (konto-ba.com)",
+  "src_url": "https://konto-ba.com/category/javni-pozivi-fzz/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://konto-ba.com/2020/02/obavijest-aplikantima-za-program-sufinanciranja-samozaposljavanja-start-up-2020": {
+  "title": "Obavijest aplikantima za Program sufinanciranja samozapošljavanja Start up 2020",
+  "source": "FZZZ pozivi (konto-ba.com)",
+  "src_url": "https://konto-ba.com/category/javni-pozivi-fzz/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.kfbih.com/edukacije-seminari-certificiranje/javni-poziv-za-dostavljanje-prijava-za-usavrsavanje-clanova-nadzornih-odbora-i-uprava-privrednih-drustava-sa-ucescem-drzavnog-kapitala-6": {
+  "title": "JAVNI POZIV za dostavljanje prijava za usavršavanje članova nadzornih odbora i uprava privrednih društava sa učešćem državnog kapitala",
+  "source": "Privredna komora FBiH – Aktuelnosti",
+  "src_url": "https://www.kfbih.com/aktuelnosti-iz-komore/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.sarajevo.ba/hr/javni-pozivi-i-nabavke": {
+  "title": "Javni pozivi i nabavke",
+  "source": "Grad Sarajevo – Javni pozivi, konkursi i oglasi",
+  "src_url": "https://www.sarajevo.ba/hr/javni-pozivi-konkursi-i-oglasi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.sarajevo.ba/hr/javni-pozivi-konkursi-i-oglasi": {
+  "title": "Javni pozivi, konkursi i oglasi",
+  "source": "Grad Sarajevo – Javni pozivi, konkursi i oglasi",
+  "src_url": "https://www.sarajevo.ba/hr/javni-pozivi-konkursi-i-oglasi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.sarajevo.ba/hr/javni-konkurs-za-najljepse-ureden-balkon-i-dvoriste": {
+  "title": "Javni konkurs za najljepše uređen balkon i dvorište",
+  "source": "Grad Sarajevo – Javni pozivi, konkursi i oglasi",
+  "src_url": "https://www.sarajevo.ba/hr/javni-pozivi-konkursi-i-oglasi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.sarajevo.ba/hr/javni-poziv-grada-sarajeva-otpad-od-hrane": {
+  "title": "Javni poziv Grada Sarajeva: Otpad od hrane",
+  "source": "Grad Sarajevo – Javni pozivi, konkursi i oglasi",
+  "src_url": "https://www.sarajevo.ba/hr/javni-pozivi-konkursi-i-oglasi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.sarajevo.ba/bs/javni-poziv-poslovnim-bankama-za-plasman-kreditne-linije-uz-subvencionisanje-dijela-kamatne-stope-za-subjekte-male-privrede-koji-posluju-na-podrucju-o": {
+  "title": "Javni poziv poslovnim bankama za plasman kreditne linije uz subvencionisanje dijela kamatne stope za subjekte male privrede koji posluju na području općine Centar Sarajevo",
+  "source": "Grad Sarajevo – Javni pozivi, konkursi i oglasi",
+  "src_url": "https://www.sarajevo.ba/hr/javni-pozivi-konkursi-i-oglasi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/biznis-i-investicije": {
+  "title": "Refundacija troškova knjigovodstveno-računovodstvenih usluga",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/biznis-i-investicije/refundacija-troskova-certificiranja": {
+  "title": "Refundacija troškova certificiranja",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/mladi-u-opcini-centar": {
+  "title": "Javni poziv za dodjelu sredstava za aktivizam mladih",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/mladi-u-opcini-centar/javni-pozivi-i-konkursi-za-mlade": {
+  "title": "Javni pozivi i konkursi za mlade",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/nevladine-organizacije": {
+  "title": "Javni pozivi i konkursi",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/f2cda43950f98a87b22684e3ca5c5ac7.pdf": {
+  "title": "Javni poziv za dodjelu novčanih podsticaja za kupovinu repromaterijala proljetne, jesenje sjetve, voćarskih sadnica i cvijeća na području Općine Centar Sarajevo",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/ba2ef8d311fac6d0963d473af460abbc.pdf": {
+  "title": "Javni poziv za refundaciju dijela troškova knjigovodstveno-računovodstvenih usluga za obrtnike na području Općine Centar Sarajevo za 2026. godinu",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/90299ef879504854a7827524f1f007d9.pdf": {
+  "title": "Javni poziv za dodjelu preostalih finansijskih sredstava iz Budžeta Općine Centar Sarajevo za 2026. godinu u svrhu samozapošljavanja i unapređenja poduzetništva",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/dffca38a7d9ff31cd8b7b81726be744f.pdf": {
+  "title": "Prijava na Javni poziv za dodjelu i prodaju zamjenskog stana sa ostavom u novoizgrađenom objektu K-79",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/0a3cb73c1451a294abea8fb7394c29fd.pdf": {
+  "title": "Javnog poziva za dodjelu finansijskih sredstava namijenjenih razvoju i unapređenju poslovanja obrtnika registrovanih na području Općine Centar Sarajevo za 2026. godinu",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/5faec252d1a991c7c671ea93ebe53e01.pdf": {
+  "title": "Javni poziv za dodjelu sredstava za sufinansiranje troškova prijevoza učenika osnovnih/srednjih škola za I polugodište 2026/2027. školske godine i djece predškolskog uzrasta sa invaliditetom koji imaju prebivalište na području Općine Centar Sarajevo",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/219539a753aa46b8113837adc2832f21.pdf": {
+  "title": "Ispravka ponovljenog javnog poziva - KUD (Datum objave 12.10.2026)",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/be155cceff9d69eafc62961784995e0c.docx": {
+  "title": "Izjava o primljenim de minimis potporama",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/documents/download/95126/ponovljeni-javni-poziv-za-izbor-korisnika-i-dodjele-sredstava-iz-budzeta-opcine-centar-sarajevo-iz-oblasti-kulture-kulturno-umjetnicka-drustva-za-2026-godinu": {
+  "title": "Ponovljeni Javni poziv za izbor korisnika i dodjele sredstava iz Budžeta Općine Centar Sarajevo iz oblasti kulture- kulturno umjetnička društva za 2026. godinu",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/5ad6565247365705351fe137ce3c9243.pdf": {
+  "title": "Javni poziv za dodjelu nagrada sportskim udruženjima sa područja općine centar sarajevo za ostvarene vrhunske sportske rezultate",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/3bc758d13bb9b7b16e581780aded0fa6.pdf": {
+  "title": "Javni poziv za nagrađivanje najuspješnijih nastavnika stručnih saradnika osnovnih škola sa područja Općine Centar Sarajevo za poseban doprinos unaprijeđenju nastavnog procesa",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/6ccf696bc379d5417c94fca9752fd1e1.pdf": {
+  "title": "Javni poziv za dodjelu sredstava učenicima romske populacije koji redovno pohađaju osnovne škole sa područja Općine Centar Sarajevo",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/documents/download/95116/javni-poziv-za-dodjelu-sredstava-ucenicima-romske-populacije-koji-redovno-pohadjaju-osnovne-skole-sa-podrucja-opcine-centar-sarajevo-2026": {
+  "title": "Javni poziv za dodjelu sredstava učenicima romske populacije koji redovno pohađaju osnovne škole sa područja Općine Centar Sarajevo 2026",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/2d25bc87c0e887a9332e13724b6b61ec.pdf": {
+  "title": "Odluka o stavljanju van snage Javnog poziva za refundaciju troškova kupovine plastenika na području Općine Centar Sarajevo",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/d3675f8551d1b09f7c6491872b1b5f1f.pdf": {
+  "title": "Javni poziv za dodjeli novčanih podsticaja za kupovinu stočne hrane",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/984bd30053d954a5c816fb626aeb75be.pdf": {
+  "title": "Javni poziv za dodjelu novčanih sredstava za sufinansiranje/finansiranje projekata neprofitnih organizacija civilnog društva čije je djelovanje usmjereno na ranjive kategorije društva",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/2465eedb3222bce9b257235016335b41.pdf": {
+  "title": "Javni poziv za prijavu pripadnika boračke populacije sa područja općine Centar Sarajevo na sporstku rehabilitaciju na Olimpijskom bazenu Otoka za 2026. godinu",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/994adb78fa390d8238ec3c944465e9b5.pdf": {
+  "title": "Javni poziv za dodjelu novčanih sredstava za sufinansiranje finansiranje projekata javnih ustanova primarne zdravstvene zaštite iz Budžeta Općine Centar Sarajevo u 2026.godini",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/54811da03e81b7dbc19d4c8cefc2dcee.pdf": {
+  "title": "Javni poziv za dostavu prijedloga projekata komunalne infrastrukture za nacrt budžeta Općine Centar Sarajevo za 2027. godinu",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/7c35036fc04dfe5e5a2c108a637e9639.pdf": {
+  "title": "Javni poziv za izbor i imenovanje članova Zdravstvenog savjeta Općine Centar Sarajevo",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/436332cfc3fd6174162bf77b69a45008.pdf": {
+  "title": "Javni poziv za sufinansiranje projekata održivog povratka u 2026.godini",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/34c81a2997042ae07654ea132d7487dd.pdf": {
+  "title": "Javni poziv za dostavu prijedloga projekata iz oblasti lokalno- ekonomskog razvoja za Nacrt Budžeta Općine Centar Sarajevo za 2027. godinu",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/5218d6ef9390a6a15d8e6dc984ed8b57.pdf": {
+  "title": "Javni poziv za dodjelu sredstava za aktivizam mladih Općine Centar Sarajevo.",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/0389f137be645c52707d49c20aacca27.pdf": {
+  "title": "Javni poziv za samozapošljavanje i unaprjeđenje poduzetništva iz sredstava Budžeta Općine Centar Sarajevo za 2026. godinu",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/d741eb5ff81da1c54c595ccf96001996.pdf": {
+  "title": "Javni poziv za sufinansiranje mjera energetske efikasnosti za objekte individualnog i kolektivnog stanovanja na području Općine Centar Sarajevo za 2026. godinu",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/documents/download/95010/javni-poziv-za-izbor-korisnika-i-dodjele-sredstava-vjerskim-zajednicama-iz-budzeta-opcine-centar-sarajevo-za-2026-godinu": {
+  "title": "Javni poziv za izbor korisnika i dodjele sredstava vjerskim zajednicama iz Budžeta Općine Centar Sarajevo za 2026. godinu",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/6b1137a958cc6459c102ee2f24a32556.pdf": {
+  "title": "Javni poziv za refundaciju troškova kupovine plastenika na području Općine Centar",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/6372ff0261161d04bd9a1171dbbf9f0a.pdf": {
+  "title": "Javni poziv za finansiranje sufinansiranje organizacija u sportu osoba sa invaliditetom u 2026. godini",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/c533e6e2f16a048bd17a32e5dbcae006.pdf": {
+  "title": "Javni poziv za dodjelu novčanih sredstava za sufinansiranje rada javnih karitativnih kuhinja iz Budžeta Općine Centar Sarajevo u 2026.godini",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/73ae6f7e088ac04da525906e7bd46d5f.pdf": {
+  "title": "Odluka o pokretanju postupka raspisivanja Javnog poziva digitalizacija 2026",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/documents/download/94969/javni-poziv-za-refundaciju-dijela-troskova-digitalizacije-poslovanja-za-obrte-i-mmsp-ove-sa-podrucja-opcine-centar-sarajevo-za-2026-godinu": {
+  "title": "Javni poziv za refundaciju dijela troškova digitalizacije poslovanja za obrte i MMSP-ove sa područja Općine Centar Sarajevo za 2026. godinu",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/e7c8577b1c020b75344fd4a6700758e6.pdf": {
+  "title": "Javni poziv za refundaciju dijela troškova certificiranja proizvodnih procesa, proizvoda ili usluga za obrte i MMSP-ove na području Općine Centar Sarajevo za 2026. godinu,",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/8657974d33089e141d6ac39713a8f1c7.pdf": {
+  "title": "DOPUNA JAVNOG POZIVA za izbor korisnika i dodjele sredstava iz Budžeta Općine Centar Sarajevo iz oblasti kulture za 2026. godinu",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/719bd0b5dcedfb73a0f7f0537aa05b78.docx": {
+  "title": "Izjava o primljenim de minimis potporama (26.5.2026)",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.centar.ba/upload/modules/documents/2026/dd0510fecf532eae48c670e842dad8c6.pdf": {
+  "title": "Ispravka Javnog poziva (26.5.2026)",
+  "source": "Općina Centar Sarajevo",
+  "src_url": "https://www.centar.ba/javni-pozivi-i-konkursi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://starigrad.ba/javni-pozivi-konkursi-i-oglasi": {
+  "title": "Javni pozivi, konkursi, oglasi i obavještenja",
+  "source": "Općina Stari Grad Sarajevo",
+  "src_url": "https://starigrad.ba/kategorija-jp/javni-poziv/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://opcinailidza.ba/javni-pozivi/javni-poziv-za-sufinansiranje-najboljih-poslovnih-planova-2": {
+  "title": "Javni poziv za sufinansiranje najboljih poslovnih planova",
+  "source": "Općina Ilidža",
+  "src_url": "https://opcinailidza.ba/javni-pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://opcinailidza.ba/javni-pozivi/javni-poziv-za-ostvarivanje-prava-na-podrsku-stambenom-zbrinjavanju-mladih-refundiranjem-troskova-placenog-poreza-na-promet-nekretnina-ili-placenog-poreza-na-dodatu-vrijednost-prilikom-kupovine-nekr-2": {
+  "title": "Javni poziv za ostvarivanje prava na podršku stambenom zbrinjavanju mladih refundiranjem troškova plaćenog poreza na promet nekretnina ili plaćenog poreza na dodatu vrijednost prilikom kupovine nekretnine u vlasništvo ili suvlasništvo",
+  "source": "Općina Ilidža",
+  "src_url": "https://opcinailidza.ba/javni-pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://opcinailidza.ba/javni-pozivi/javni-poziv-privrednim-subjektima-da-se-prijave-za-ucesce-u-mjeri-refundacija-dijela-troskova-digitalizacije-poslovanja-za-samostalne-poduzetnike-mikro-mala-i-srednja-preduzeca-2": {
+  "title": "Javni poziv privrednim subjektima da se prijave za učešće u mjeri “Refundacija dijela troškova digitalizacije poslovanja za samostalne poduzetnike, mikro mala i srednja preduzeća”",
+  "source": "Općina Ilidža",
+  "src_url": "https://opcinailidza.ba/javni-pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://opcinailidza.ba/javni-pozivi/javni-poziv-za-dodjelu-sredstava-za-sufinansiranje-troskova-prijevoza-djece-predskolskog-uzrasta-sa-teskocama-u-razvoju-i-ucenika-srednjih-skola-sa-prebivalistem-na-podrucju-opcine-ilidza": {
+  "title": "Javni poziv za dodjelu sredstava za sufinansiranje troškova prijevoza djece predškolskog uzrasta sa teškoćama u razvoju i učenika srednjih škola sa prebivalištem na području općine Ilidža",
+  "source": "Općina Ilidža",
+  "src_url": "https://opcinailidza.ba/javni-pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://opcinailidza.ba/javni-pozivi/javni-poziv-za-sufinansiranje-projekata-za-mlade-iz-budzeta-opcine-ilidza-za-2026-godinu": {
+  "title": "Javni poziv za (su)finansiranje projekata za mlade iz Budžeta Općine Ilidža za 2026. godinu",
+  "source": "Općina Ilidža",
+  "src_url": "https://opcinailidza.ba/javni-pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://opcinailidza.ba/javni-pozivi/javni-poziv-za-izbor-najljepseg-dvorista-i-balkona-sa-cvjetnim-aranzmanom-na-podrucju-opcine-ilidza-3": {
+  "title": "Javni poziv za izbor najljepšeg dvorišta i balkona sa cvjetnim aranžmanom na području općine Ilidža",
+  "source": "Općina Ilidža",
+  "src_url": "https://opcinailidza.ba/javni-pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://opcinailidza.ba/javni-pozivi/javni-poziv-privrednim-subjektima-da-se-prijave-za-ucesce-u-mjeri-podrska-uvodjenju-certifikata": {
+  "title": "Javni poziv privrednim subjektima da se prijave za učešće u mjeri „Podrška uvođenju certifikata“",
+  "source": "Općina Ilidža",
+  "src_url": "https://opcinailidza.ba/javni-pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://opcinailidza.ba/javni-pozivi/javni-pozivsufinansiranje-troskova-vanrednog-skolovanja-prekvalifikacije-i-dokvalifikacije-nezaposlenih-osoba": {
+  "title": "Javni poziv„Sufinansiranje troškova vanrednog školovanja, prekvalifikacije i dokvalifikacije nezaposlenih osoba“",
+  "source": "Općina Ilidža",
+  "src_url": "https://opcinailidza.ba/javni-pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://opcinailidza.ba/javni-pozivi/javni-poziv-za-finansiranje-sufinansiranje-projekata-programa-i-manifestacija-neprofitnih-udruzenja-i-fondacija-iz-budzeta-opcine-ilidza-za-2026-godinu": {
+  "title": "Javni poziv za finansiranje/sufinansiranje projekata, programa i manifestacija neprofitnih udruženja i fondacija iz Budžeta Općine Ilidža za 2026. godinu",
+  "source": "Općina Ilidža",
+  "src_url": "https://opcinailidza.ba/javni-pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://opcinailidza.ba/javni-pozivi/javni-poziv-za-ostvarivanje-prava-na-novcani-podsticaj-u-poljoprivrednoj-proizvodnji-2": {
+  "title": "Javni poziv za ostvarivanje prava na novčani podsticaj u poljoprivrednoj proizvodnji",
+  "source": "Općina Ilidža",
+  "src_url": "https://opcinailidza.ba/javni-pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://opcinailidza.ba/javni-pozivi/javni-poziv-privrednim-subjektima-da-se-prijave-za-ucesce-u-mjeri-refundacija-dijela-troskova-kupovine-sredstava-za-rad-za-samostalne-poduzetnike-mikro-mala-i-srednja-preduzeca-2": {
+  "title": "Javni poziv privrednim subjektima da se prijave za učešće u mjeri „Refundacija dijela troškova kupovine sredstava za rad za samostalne poduzetnike, mikro, mala i srednja preduzeća“",
+  "source": "Općina Ilidža",
+  "src_url": "https://opcinailidza.ba/javni-pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://opcinailidza.ba/javni-pozivi/javni-poziv-privrednim-subjektima-da-se-prijave-za-ucesce-u-mjeri-podrska-zaposljavanju-novih-radnika": {
+  "title": "Javni poziv privrednim subjektima da se prijave za učešće u mjeri „Podrška zapošljavanju novih radnika“",
+  "source": "Općina Ilidža",
+  "src_url": "https://opcinailidza.ba/javni-pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://vogosca.ba/2026/11/05/javni-poziv-za-sufinansiranje-rada-i-aktivnosti-borackih-udruzenja-udruzenja-civilnih-zrtava-rata-udruzenja-logorasa-i-udruzenja-porodica-nestalih-sa-podrucja-opcine-vogosca-za-2027-godinu": {
+  "title": "JAVNI POZIV ZA SUFINANSIRANJE RADA I AKTIVNOSTI BORAČKIH UDRUŽENJA, UDRUŽENJA CIVILNIH ŽRTAVA RATA, UDRUŽENJA LOGORAŠA I UDRUŽENJA PORODICA NESTALIH SA PODRUČJA OPĆINE VOGOŠĆA ZA 2027.GODINU",
+  "source": "Općina Vogošća",
+  "src_url": "https://vogosca.ba/category/javni_pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://vogosca.ba/2026/10/21/javni-poziv-za-ucesce-uakceleratorskom-programu": {
+  "title": "Javni poziv za učešće u Akceleratorskom programu",
+  "source": "Općina Vogošća",
+  "src_url": "https://vogosca.ba/category/javni_pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://vogosca.ba/2026/10/07/javni-poziv-za-podnosenje-zahtjeva-za-sufinansiranje-troskova-kupovine-stocne-hrane-za-2026-godinu": {
+  "title": "JAVNI POZIV ZA PODNOŠENJE ZAHTJEVA ZA SUFINANSIRANJE TROŠKOVA KUPOVINE STOČNE HRANE ZA 2026.GODINU",
+  "source": "Općina Vogošća",
+  "src_url": "https://vogosca.ba/category/javni_pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://vogosca.ba/2026/09/18/javni-poziv-za-realizaciju-programa-poticaja-samostalnim-djelatnostima-koje-fizicka-lica-obavljaju-kao-osnovno-zanimanje-na-podrucju-opcine-vogosca": {
+  "title": "JAVNI POZIV ZA REALIZACIJU PROGRAMA POTICAJA SAMOSTALNIM DJELATNOSTIMA KOJE FIZIČKA LICA OBAVLJAJU KAO OSNOVNO ZANIMANJE NA PODRUČJU OPĆINE VOGOŠĆA",
+  "source": "Općina Vogošća",
+  "src_url": "https://vogosca.ba/category/javni_pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://vogosca.ba/2026/09/17/javni-poziv-za-dodjelu-sredstava-za-provodenje-mjera-energetske-efikasnosti-u-stambenim-objektima-za-2026-godinu": {
+  "title": "Javni poziv za dodjelu sredstava za provođenje mjera energetske efikasnosti u stambenim objektima za 2026. godinu",
+  "source": "Općina Vogošća",
+  "src_url": "https://vogosca.ba/category/javni_pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://vogosca.ba/2026/09/16/javni-poziv-za-izbor-korisnika-sufinansiranja-gasnih-prikljucaka-na-postojecu-infrastrukturu-sarajevogasa": {
+  "title": "Javni poziv za izbor korisnika sufinansiranja gasnih priključaka na postojeću infrastrukturu Sarajevogasa",
+  "source": "Općina Vogošća",
+  "src_url": "https://vogosca.ba/category/javni_pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://vogosca.ba/2026/09/02/javni-poziv-za-dodjelu-sredstava-za-sufinansiranje-troskova-prijevoza-djece-ucenika-studenata-i-osoba-sa-teskocama-u-razvoju-i-invaliditetom-koji-imaju-prebivaliste-na-podrucju-opcine-vogosca": {
+  "title": "JAVNI POZIV ZA DODJELU SREDSTAVA ZA SUFINANSIRANJE TROŠKOVA PRIJEVOZA DJECE, UČENIKA, STUDENATA I OSOBA SA TEŠKOĆAMA U RAZVOJU I INVALIDITETOM KOJI IMAJU PREBIVALIŠTE NA PODRUČJU OPĆINE VOGOŠĆA",
+  "source": "Općina Vogošća",
+  "src_url": "https://vogosca.ba/category/javni_pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.ilijas.ba/index.php/javni-pozivi/javni-poziv-za-izrazavanje-interesa-za-odabir-novih-privremenih-zemljisnoknjiznih-asistenata": {
+  "title": "Javni poziv za izražavanje interesa za odabir novih privremenih zemljišnoknjižnih asistenata",
+  "source": "Općina Ilijaš",
+  "src_url": "https://www.ilijas.ba/index.php/javni-pozivi",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.trnovo.ba/2026/10/23/isplaceni-podsticaji-za-poljoprivredu": {
+  "title": "Isplaćeni podsticaji za poljoprivredu",
+  "source": "Općina Trnovo",
+  "src_url": "https://www.trnovo.ba/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.zupanijaposavska.ba/liste-korisnika-subvencije-ured-za-obnovu-stambeno-zbrinjavanje-i-raseljene-osobe-4": {
+  "title": "Liste korisnika subvencije – Ured za obnovu, stambeno zbrinjavanje i raseljene osobe",
+  "source": "Posavski kanton – Javni pozivi",
+  "src_url": "https://www.zupanijaposavska.ba/category/javni-dokumenti/javni-pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.zupanijaposavska.ba/javni-poziv-za-dodjelu-sredstava-iz-proracuna-zupanije-posavske-za-2026-godinu-javnim-zdravstvenim-ustanovama-ministarstvo-zdravstva-i-socijalne-politike-zp-3": {
+  "title": "Javni poziv za dodjelu sredstava iz Proračuna Županije Posavske za 2026. godinu javnim zdravstvenim ustanovama – Ministarstvo zdravstva i socijalne politike ŽP",
+  "source": "Posavski kanton – Javni pozivi",
+  "src_url": "https://www.zupanijaposavska.ba/category/javni-dokumenti/javni-pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.zupanijaposavska.ba/javni-poziv-za-prikupljanje-zahtjeva-za-sufinanciranje-projekata-zastite-okolisa-5": {
+  "title": "Javni poziv za prikupljanje zahtjeva za sufinanciranje projekata zaštite okoliša",
+  "source": "Posavski kanton – Javni pozivi",
+  "src_url": "https://www.zupanijaposavska.ba/category/javni-dokumenti/javni-pozivi/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://mg-zzh.com/2026/09/24/subvencionirane-kamate-na-poduzetnicke-kredite-izravna-potpora-gospodarstvu": {
+  "title": "Subvencionirane kamate na poduzetničke kredite – izravna potpora gospodarstvu",
+  "source": "ZHK – Ministarstvo gospodarstva",
+  "src_url": "https://mg-zzh.com/category/aktualnosti/novosti/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://mg-zzh.com/2026/08/05/ministar-siric-i-gradonacelnik-pavkovic-potpisali-tri-ugovora-o-sufinanciranju-ukupne-vrijednosti-272-00000-km": {
+  "title": "Ministar Širić i gradonačelnik Pavković potpisali tri ugovora o sufinanciranju ukupne vrijednosti 272.000,00 KM",
+  "source": "ZHK – Ministarstvo gospodarstva",
+  "src_url": "https://mg-zzh.com/category/aktualnosti/novosti/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://mg-zzh.com/2026/08/03/javni-poziv-za-podnosenje-prijava-za-odobrenje-sredstava-tekuci-prijenosi-za-koncesije-utvrdenih-proracunom-zupanije-zapadnohercegovacke-za-2026-godinu": {
+  "title": "JAVNI POZIV za podnošenje prijava za odobrenje sredstava “Tekući prijenosi za koncesije” utvrđenih Proračunom Županije Zapadnohercegovačke za 2026. godinu",
+  "source": "ZHK – Ministarstvo gospodarstva",
+  "src_url": "https://mg-zzh.com/category/aktualnosti/novosti/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://eui-zzh.ba/index.php/javni-pozivi.html": {
+  "title": "Javni pozivi",
+  "source": "ZHK – Ured Vlade za europske integracije",
+  "src_url": "https://eui-zzh.ba/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://eui-zzh.ba/index.php/vijesti/1675-javni-poziv-za-dodjelu-bespovratnih-sredstava-za-projekte-ublazavanja-i-prilagodbe-klimatskim-promjenama-u-bosni-i-hercegovini-za-2026-godinu.html": {
+  "title": "JAVNI POZIV ZA DODJELU BESPOVRATNIH SREDSTAVA ZA PROJEKTE UBLAŽAVANJA I PRILAGODBE KLIMATSKIM PROMJENAMA U BOSNI I HERCEGOVINI ZA 2026. GODINU",
+  "source": "ZHK – Ured Vlade za europske integracije",
+  "src_url": "https://eui-zzh.ba/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://eui-zzh.ba/index.php/javni-pozivi/1670-javni-poziv-za-prijavu-posebnih-potreba-i-projekata-od-interesa-za-hrvate-izvan-republike-hrvatske-u-svrhu-ostvarenja-financijske-potpore-za-2026-godinu.html": {
+  "title": "JAVNI POZIV ZA PRIJAVU POSEBNIH POTREBA I PROJEKATA OD INTERESA ZA HRVATE IZVAN REPUBLIKE HRVATSKE U SVRHU OSTVARENJA FINANCIJSKE POTPORE ZA 2026. GODINU",
+  "source": "ZHK – Ured Vlade za europske integracije",
+  "src_url": "https://eui-zzh.ba/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.vladahbz.com/javni-pozivi": {
+  "title": "Javni pozivi",
+  "source": "Kanton 10 (HBŽ) – Ministarstvo gospodarstva",
+  "src_url": "https://www.vladahbz.com/ministarstvo-gospodarstva/aktivnosti-ministarstva/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.vladahbz.com/javni-natjecaji": {
+  "title": "Javni natječaji",
+  "source": "Kanton 10 (HBŽ) – Ministarstvo gospodarstva",
+  "src_url": "https://www.vladahbz.com/ministarstvo-gospodarstva/aktivnosti-ministarstva/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.vladahbz.com/objavljen-javni-poziv-za-prikupljanje-prijava-na-program-podrske-osnivanju-poduzeca-u-hercegbosanskoj-zupaniji-2": {
+  "title": "Objavljen Javni poziv za prikupljanje prijava na Program podrške osnivanju poduzeća u Hercegbosanskoj županiji",
+  "source": "Kanton 10 (HBŽ) – Ministarstvo gospodarstva",
+  "src_url": "https://www.vladahbz.com/ministarstvo-gospodarstva/aktivnosti-ministarstva/",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/javni-poziv-za-ucesce-preduzeca-u-obuci-iz-oblasti-kontrolinga": {
+  "title": "Javni poziv za učešće preduzeća u obuci iz oblasti kontrolinga",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/javni-poziv-za-ucesce-u-programu-brand-her-bijeljina-akademija-za-razvoj-zenskog-preduzetnistva-i-lokalnih-brendova": {
+  "title": "Javni poziv za učešće u programu BRAND HER Bijeljina - Akademija za razvoj ženskog preduzetništva i lokalnih brendova",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/javni-poziv-za-refundaciju-troskova-zakupa-prodajnog-mjesta-na-trznici-na-malo-pijaca-malta-opcine-novo-sarajevo-za-2026-godinu": {
+  "title": "Javni poziv za refundaciju troškova zakupa prodajnog mjesta na tržnici na malo - pijaca „Malta“ Općine Novo Sarajevo za 2026. godinu",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/javni-poziv-za-dodjelu-finansijskih-sredstava-obrtnicima-kroz-refundaciju-dijela-troskova-knjigovodstveno-racunovodstvenih-usluga-za-2026-godinu": {
+  "title": "Javni poziv za dodjelu finansijskih sredstava obrtnicima kroz refundaciju dijela troškova knjigovodstveno-računovodstvenih usluga za 2026. godinu",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/radionica-zapocni-svoj-posao-akademija-poduzetnistva-projekat-poduzetnicki-navigator": {
+  "title": "Radionica \"Započni svoj posao\" – Akademija poduzetništva (projekat Poduzetnički navigator)",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/poziv-organizacijama-za-podrsku-privredi-za-ucesce-u-programu-izgradnje-kapaciteta-u-okviru-greensmes-projekta": {
+  "title": "Poziv organizacijama za podršku privredi za učešće u programu izgradnje kapaciteta u okviru GREENSMES projekta",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/greenstart-javni-poziv-za-nezaposlene-osobe-iz-visokog-breze-i-kaknja-obuka-mentorstvo-i-grant-za-poslovne-ideje": {
+  "title": "GreenSTART – Javni poziv za nezaposlene osobe iz Visokog, Breze i Kaknja (obuka, mentorstvo i grant za poslovne ideje)",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/javni-poziv-za-ucesce-na-besplatnoj-obuci-za-mikro-mala-i-srednja-preduzeca-s-podrucja-jablanice-konjica-i-mostara": {
+  "title": "Javni poziv za učešće na besplatnoj obuci za mikro, mala i srednja preduzeća s područja Jablanice, Konjica i Mostara",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/javni-poziv-za-digitalizaciju-poslovanja-mikro-malih-i-srednjih-preduzeca-opcina-ilidza-2026": {
+  "title": "Javni poziv za digitalizaciju poslovanja mikro, malih i srednjih preduzeća (Općina Ilidža, 2026)",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/javni-poziv-za-refundaciju-troskova-nabavke-osnovnih-sredstava-za-rad-opcina-ilidza-2026": {
+  "title": "Javni poziv za refundaciju troškova nabavke osnovnih sredstava za rad (Općina Ilidža, 2026)",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/javni-poziv-za-refundaciju-dijela-troskova-digitalizacije-poslovanja-za-obrte-i-mmsp-ove": {
+  "title": "Javni poziv za refundaciju dijela troškova digitalizacije poslovanja za obrte i MMSP-ove",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/javni-poziv-za-ucesce-u-akceleratorskom-programu-projekt-a4sustinno": {
+  "title": "Javni poziv za učešće u Akceleratorskom programu (projekt A4SUSTINNO)",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/javni-poziv-za-podrsku-skijalistima-sa-podrucja-srednjobosanskog-kantona-za-2026-godinu": {
+  "title": "Javni poziv za podršku skijalištima sa područja Srednjobosanskog kantona za 2026. godinu",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/javni-poziv-za-raspodjelu-namjenskih-sredstava-u-cilju-sufinansiranja-projekata-izgradnje-i-postavljanja-punionica-za-punjenje-cestovnih-vozila-s-pogonom-na-elektricnu-energiju-za-javnu-upotrebu": {
+  "title": "Javni poziv za raspodjelu namjenskih sredstava u cilju sufinansiranja projekata izgradnje i postavljanja punionica za punjenje cestovnih vozila s pogonom na električnu energiju za javnu upotrebu",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/garantni-fond-nerda-u-saradnji-sa-asa-bankom-krediti-uz-garanciju-za-mala-i-srednja-preduzeca": {
+  "title": "Garantni fond NERDA u saradnji sa ASA Bankom – krediti uz garanciju za mala i srednja preduzeća",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/eu4business-recovery-energijska-tranzicija-msp": {
+  "title": "EU4Business Recovery - Energijska tranzicija MSP",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/sektor-tehnickog-odrzavanja-opreme": {
+  "title": "Sektor tehničkog održavanja opreme",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://bhgrant.ba/poziv/javni-poziv-za-odabir-korisnika-stambenih-kredita-za-mlade-opcina-tesanj": {
+  "title": "Javni poziv za odabir korisnika stambenih kredita za mlade – Općina Tešanj",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/sufinansiranje-projekata-javne-turisticke-infrastrukture-na-podrucju.t28485.html": {
+  "title": "Sufinansiranje projekata javne turističke infrastrukture na području",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/literature-translation.t28495.html": {
+  "title": "Literature Translation",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/women-safety.t28582.html": {
+  "title": "Women Safety",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/sdg-reporting.t28670.html": {
+  "title": "SDG Reporting",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/cultural-collaboration.t27940.html": {
+  "title": "Cultural Collaboration",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/sufinansiranje-projekata-javne-turisticke-infrastrukture-na-podrucju-tuzlanskog-kantona.t28549.html": {
+  "title": "Sufinansiranje projekata javne turističke infrastrukture na području Tuzlanskog kantona",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/sufinansiranje-projekata-javne-turisticke-infrastrukture.t28684.html": {
+  "title": "Sufinansiranje projekata javne turističke infrastrukture",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/sustainability-support.t28050.html": {
+  "title": "Sustainability Support",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/upravljanje-zasticenim-podrucjima.t28517.html": {
+  "title": "Upravljanje zaštićenim područjima",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/socpl-2026-info-repr.t27895.html": {
+  "title": "SOCPL-2026-INFO-REPR",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/fintech-access.t27328.html": {
+  "title": "Fintech Access",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/dodjela-sredstava-neprofinim-organizacijama-za-koristenje-lovista.t28587.html": {
+  "title": "Dodjela sredstava neprofinim organizacijama za korištenje lovišta",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/dodjela-sredstava-za-naucne-projekte-i-naucne-skupove.t28635.html": {
+  "title": "Dodjela sredstava za naučne projekte i naučne skupove",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/analiza-vegetacije-urbane-zelene-povrsine-za-implementaciju-projekta-realurbangreen.t28703.html": {
+  "title": "Analiza vegetacije urbane zelene površine za implementaciju projekta RealUrbanGreen",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/uapredjenja-urbane-zelene-povrsine-u-okviru-implementacije-projekta-realurbangreen.t28704.html": {
+  "title": "Uapređenja urbane zelene površine u okviru implementacije projekta RealUrbanGreen",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/podizanje-svijesti-o-znacaju-organizacija-osoba-s-invaliditetom.t28613.html": {
+  "title": "PODIZANJE SVIJESTI O ZNAČAJU ORGANIZACIJA OSOBA S INVALIDITETOM",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/reconnaissance-development.t28468.html": {
+  "title": "Reconnaissance Development",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/research-and-innovation-collab.t28081.html": {
+  "title": "Research And Innovation Collab",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/projekati-navodnjavanja-i-odvodnje.t28689.html": {
+  "title": "PROJEKATI NAVODNJAVANJA I ODVODNJE",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
+ },
+ "https://www.eufondovikonkursi.com/territorial-resilience.t28324.html": {
+  "title": "Territorial Resilience",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "09.11.2026 09:56"
  }
 }
