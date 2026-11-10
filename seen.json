@@ -765,7 +765,7 @@
    "state": "ok",
    "since": "2026-11-09",
    "days": 2,
-   "count": 3,
+   "count": 2,
    "reason": "",
    "last_reachable": "2026-11-10",
    "last_items": "2026-11-10"
@@ -803,16 +803,6 @@
    "last_reachable": "2026-11-10",
    "last_items": "2026-11-10"
   },
-  "https://okks.ba/": {
-   "name": "Obrtnička komora KS",
-   "url": "https://okks.ba/",
-   "state": "silent",
-   "since": "2026-11-09",
-   "days": 2,
-   "count": 0,
-   "reason": "",
-   "last_reachable": "2026-11-10"
-  },
   "https://www.centar.ba/javni-pozivi-i-konkursi": {
    "name": "Općina Centar Sarajevo",
    "url": "https://www.centar.ba/javni-pozivi-i-konkursi",
@@ -842,7 +832,8 @@
    "since": "2026-11-09",
    "days": 2,
    "count": 0,
-   "reason": "HTTP 404"
+   "reason": "HTTP 404",
+   "alerted": "down"
   },
   "https://opcinailidza.ba/javni-pozivi/": {
    "name": "Općina Ilidža",
@@ -865,16 +856,6 @@
    "reason": "",
    "last_reachable": "2026-11-10",
    "last_items": "2026-11-10"
-  },
-  "https://hadzici.ba/obavijesti/": {
-   "name": "Općina Hadžići",
-   "url": "https://hadzici.ba/obavijesti/",
-   "state": "silent",
-   "since": "2026-11-09",
-   "days": 2,
-   "count": 0,
-   "reason": "",
-   "last_reachable": "2026-11-10"
   },
   "https://www.ilijas.ba/index.php/javni-pozivi": {
    "name": "Općina Ilijaš",
@@ -949,7 +930,8 @@
    "since": "2026-11-09",
    "days": 2,
    "count": 0,
-   "reason": "HTTP 403"
+   "reason": "HTTP 403",
+   "alerted": "down"
   },
   "https://interreg-hr-ba-me.eu/": {
    "name": "Interreg IPA Hrvatska–BiH–Crna Gora",
@@ -994,6 +976,16 @@
    "reason": "",
    "last_reachable": "2026-11-10",
    "last_items": "2026-11-10"
+  },
+  "https://hadzici.ba/category/aktuelnosti/": {
+   "name": "Općina Hadžići",
+   "url": "https://hadzici.ba/category/aktuelnosti/",
+   "state": "silent",
+   "since": "2026-11-10",
+   "days": 1,
+   "count": 0,
+   "reason": "",
+   "last_reachable": "2026-11-10"
   }
  },
  "__meta__": {
@@ -1907,5 +1899,33 @@
   "source": "Općina Kupres – prenosi pozive za firme",
   "src_url": "https://www.opcinakupres.ba/naslovnica",
   "first_seen": "10.11.2026 11:24"
+ },
+ "https://bhgrant.ba/poziv/poziv-bh-kompanijama-za-ucesce-u-poslovnom-programu-u-njemackoj-odrziva-poslovna-saradnja-u-dunavskoj-regiji": {
+  "title": "Poziv bh. kompanijama za učešće u poslovnom programu u Njemačkoj: Održiva poslovna saradnja u Dunavskoj regiji",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "10.11.2026 15:00",
+  "notified_on": "2026-11-10"
+ },
+ "https://bhgrant.ba/poziv/javni-poziv-za-nezaposlene-osobe-iz-visokog-breze-i-kaknja-projekat-greenstart": {
+  "title": "Javni poziv za nezaposlene osobe iz Visokog, Breze i Kaknja – projekat GreenSTART",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "10.11.2026 15:00",
+  "notified_on": "2026-11-10"
+ },
+ "https://bhgrant.ba/poziv/javni-poziv-za-ucesce-u-programu-skrivena-vrijednost-otkrijte-zastitite-i-iskoristite-intelektualnu-imovinu-svoje-kompanije-ip-klinika": {
+  "title": "Javni poziv za učešće u programu „Skrivena vrijednost“ – Otkrijte, zaštitite i iskoristite intelektualnu imovinu svoje kompanije (IP Klinika)",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "10.11.2026 15:00",
+  "notified_on": "2026-11-10"
+ },
+ "https://www.opcinakupres.ba/naslovnica/2009-javni-natjecaj": {
+  "title": "Javni natječaj",
+  "source": "Općina Kupres – prenosi pozive za firme",
+  "src_url": "https://www.opcinakupres.ba/naslovnica",
+  "first_seen": "10.11.2026 15:00",
+  "notified_on": "2026-11-10"
  }
 }
