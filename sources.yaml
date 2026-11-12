@@ -1,4 +1,4 @@
-# Izvori za praćenje javnih poziva (MSP u FBiH) — verzija 3.3.1 (34 izvora)
+# Izvori za praćenje javnih poziva (MSP u FBiH) — verzija 3.3.2 (36 izvora)
 # Skripta za svaki izvor prvo traži RSS, a ako ga nema čita HTML stranicu.
 # Izvor se prvi put upisuje BEZ obavještenja (nema poplave starih poziva).
 # "tier" služi samo za grupisanje u obavještenju.
@@ -167,6 +167,23 @@
 
 
 # ═══════════════════════ EU PROGRAMI I DONATORI ═══════════════════════
+
+# SERDA – Sarajevska regionalna razvojna agencija: provodi EU i donatorske programe
+# za MSP (SPRING Challenge fond, E4EO...). Na stranici su uglavnom vijesti o projektima,
+# a pozivi se pojavljuju nekoliko puta godišnje - zato duži prag "bez stavki".
+- name: "SERDA – Novosti"
+  tier: "EU i donatori"
+  url: "https://serda.ba/bs/novosti"
+  rss: false
+  tihi_dani: 60
+
+# Program SPRING (finansira Švedska; provode SERDA, EDA i Fondacija Mozaik):
+# posebna stranica samo sa pozivima - grantovi za MSP, izvoznike, obrte i poduzetnike.
+- name: "Program SPRING – Pozivi"
+  tier: "EU i donatori"
+  url: "https://spring.ba/bs/novosti/pozivi"
+  link_obrazac: "/bs/novost/[^/]+/\\d+"
+  tihi_dani: 90
 
 # UNDP blokira automatske posjete sa GitHub servera (HTTP 403).
 # UNDP pozive prenose BH Grant, EU Fondovi i Općina Kupres (agregatori ispod).

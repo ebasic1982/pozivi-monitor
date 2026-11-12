@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Monitor javnih poziva za MSP u FBiH  (verzija 3.3)
+Monitor javnih poziva za MSP u FBiH  (verzija 3.3.2)
 
 Radi u tri koraka:
   1) Za svaki izvor trazi RSS feed (prvo feed kategorije, pa opsti), a ako ga nema
@@ -241,6 +241,25 @@ def slug_title(t):
     return s[:1].upper() + s[1:] if s else t
 
 
+def link_text(a):
+    """Naslov linka:
+    - ako je cijela kartica jedan link (slika + datum + naslov + sazetak), uzima se
+      samo naslov iz zaglavlja (h1-h6) unutar kartice
+    - ako link nema teksta (npr. samo slika), uzima se title ili alt slike"""
+    h = a.find(["h1", "h2", "h3", "h4", "h5", "h6"])
+    if h:
+        t = h.get_text(" ", strip=True)
+        if len(t) >= 5:
+            return t
+    t = a.get_text(" ", strip=True)
+    if t:
+        return t
+    if a.get("title"):
+        return a["title"].strip()
+    img = a.find("img", alt=True)
+    return img["alt"].strip() if img else ""
+
+
 def from_html(url, soup, src):
     """Vadi pozive iz HTML stranice.
     - standardno: link ciji tekst sadrzi kljucnu rijec
@@ -256,7 +275,7 @@ def from_html(url, soup, src):
         if href.startswith(("mailto:", "tel:", "#", "javascript:")):
             continue
         link = urljoin(url, href)
-        text = a.get_text(" ", strip=True) or (a.get("title") or "").strip()
+        text = link_text(a)
         if text and looks_like_path(text):
             text = (context_title(a) if context_mode else None) or slug_title(text)
 
