@@ -16,6 +16,8 @@
   "https://opcinailidza.ba/javni-pozivi/",
   "https://privredahnk.gov.ba/",
   "https://rbfbih.ba/",
+  "https://serda.ba/bs/novosti",
+  "https://spring.ba/bs/novosti/pozivi",
   "https://starigrad.ba/kategorija-jp/javni-poziv/",
   "https://szks.ba/javni-pozivi/",
   "https://vladausk.ba/v4/index/ministarstvo-privrede/4?vrsta=4",
@@ -721,7 +723,7 @@
    "state": "ok",
    "since": "2026-11-09",
    "days": 4,
-   "count": 9,
+   "count": 7,
    "reason": "",
    "last_reachable": "2026-11-12",
    "last_items": "2026-11-12"
@@ -986,6 +988,28 @@
    "count": 0,
    "reason": "",
    "last_reachable": "2026-11-12"
+  },
+  "https://serda.ba/bs/novosti": {
+   "name": "SERDA – Novosti",
+   "url": "https://serda.ba/bs/novosti",
+   "state": "ok",
+   "since": "2026-11-12",
+   "days": 1,
+   "count": 1,
+   "reason": "",
+   "last_reachable": "2026-11-12",
+   "last_items": "2026-11-12"
+  },
+  "https://spring.ba/bs/novosti/pozivi": {
+   "name": "Program SPRING – Pozivi",
+   "url": "https://spring.ba/bs/novosti/pozivi",
+   "state": "ok",
+   "since": "2026-11-12",
+   "days": 1,
+   "count": 4,
+   "reason": "",
+   "last_reachable": "2026-11-12",
+   "last_items": "2026-11-12"
   }
  },
  "__meta__": {
@@ -2172,5 +2196,35 @@
   "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
   "first_seen": "12.11.2026 15:21",
   "notified_on": "2026-11-12"
+ },
+ "https://serda.ba/bs/novosti/zaprimljeno-113-projektnih-prijava-na-prvi-javni-poziv-challenge-fonda-u-okviru-spring-programa/4170": {
+  "title": "Zaprimljeno 113 projektnih prijava na Prvi javni poziv Challenge fonda u okviru SPRING programa",
+  "source": "SERDA – Novosti",
+  "src_url": "https://serda.ba/bs/novosti",
+  "first_seen": "12.11.2026 15:32"
+ },
+ "https://spring.ba/bs/novost/otvoren-prvi-javni-poziv-challenge2change-i-internacionalizacija/34": {
+  "title": "Otvoren Prvi javni poziv – Challenge2Change i internacionalizacija",
+  "source": "Program SPRING – Pozivi",
+  "src_url": "https://spring.ba/bs/novosti/pozivi",
+  "first_seen": "12.11.2026 15:32"
+ },
+ "https://spring.ba/bs/novost/mozaik-plavi-grantovi-do-10000-km-za-inovativne-biznise-ili-zanate/29": {
+  "title": "Mozaik plavi grantovi: do 10.000 KM za inovativne biznise ili zanate",
+  "source": "Program SPRING – Pozivi",
+  "src_url": "https://spring.ba/bs/novosti/pozivi",
+  "first_seen": "12.11.2026 15:32"
+ },
+ "https://spring.ba/bs/novost/otvoren-javni-poziv-u-okviru-c2colab-fonda-programa-spring/15": {
+  "title": "Otvoren javni poziv u okviru C2CoLab fonda programa SPRING",
+  "source": "Program SPRING – Pozivi",
+  "src_url": "https://spring.ba/bs/novosti/pozivi",
+  "first_seen": "12.11.2026 15:32"
+ },
+ "https://spring.ba/bs/novost/mozaik-narandzasti-grantovi-do-3000-km-za-ideje-mladih-koje-grade-lokalne-zajednice/13": {
+  "title": "Mozaik narandžasti grantovi: do 3.000 KM za ideje mladih koje grade lokalne zajednice",
+  "source": "Program SPRING – Pozivi",
+  "src_url": "https://spring.ba/bs/novosti/pozivi",
+  "first_seen": "12.11.2026 15:32"
  }
 }
