@@ -622,77 +622,77 @@
    "url": "https://fmrpo.gov.ba/category/javni-natjecajikonkursi/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 7,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://javnipozivi.fmrpo.gov.ba/": {
    "name": "FMRPO – Platforma javnih poziva",
    "url": "https://javnipozivi.fmrpo.gov.ba/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 19,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://rbfbih.ba/": {
    "name": "Razvojna banka FBiH",
    "url": "https://rbfbih.ba/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 17,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://mp.ks.gov.ba/aktuelo/konkursi": {
    "name": "Ministarstvo privrede KS – Konkursi / Javni pozivi",
    "url": "https://mp.ks.gov.ba/aktuelo/konkursi",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 17,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://szks.ba/javni-pozivi/": {
    "name": "JU Služba za zapošljavanje KS",
    "url": "https://szks.ba/javni-pozivi/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 16,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://www.novigradsarajevo.ba/cat/news/invitation/": {
    "name": "Općina Novi Grad Sarajevo",
    "url": "https://www.novigradsarajevo.ba/cat/news/invitation/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 4,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://zdk.ba/ministarstvo-za-privredu-javni-pozivi": {
    "name": "ZDK – Ministarstvo za privredu",
    "url": "https://zdk.ba/ministarstvo-za-privredu-javni-pozivi",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 4,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://privredahnk.gov.ba/": {
    "name": "HNK – Ministarstvo privrede",
@@ -700,139 +700,139 @@
    "alerted": null,
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 4,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://mptk.gov.ba/": {
    "name": "TK – Ministarstvo privrede",
    "url": "https://mptk.gov.ba/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 6,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://vladausk.ba/v4/index/ministarstvo-privrede/4?vrsta=4": {
    "name": "USK – Ministarstvo privrede (javni pozivi)",
    "url": "https://vladausk.ba/v4/index/ministarstvo-privrede/4?vrsta=4",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 7,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://bpkg.gov.ba/kategorija/pozivi-tenderi": {
    "name": "BPK Goražde – Pozivi/Tenderi",
    "url": "https://bpkg.gov.ba/kategorija/pozivi-tenderi",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 10,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://businessplansstartup.com/": {
    "name": "Agregator poziva (businessplansstartup.com)",
    "url": "https://businessplansstartup.com/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 8,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://fzofbih.org.ba/kategorija/javni-konkursi/": {
    "name": "Fond za zaštitu okoliša FBiH – Javni konkursi",
    "url": "https://fzofbih.org.ba/kategorija/javni-konkursi/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 11,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://fmoit.gov.ba/": {
    "name": "Federalno ministarstvo okoliša i turizma",
    "url": "https://fmoit.gov.ba/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
-   "count": 2,
+   "days": 6,
+   "count": 1,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://konto-ba.com/category/javni-pozivi-fzz/": {
    "name": "FZZZ pozivi (konto-ba.com)",
    "url": "https://konto-ba.com/category/javni-pozivi-fzz/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 7,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://www.kfbih.com/aktuelnosti-iz-komore/": {
    "name": "Privredna komora FBiH – Aktuelnosti",
    "url": "https://www.kfbih.com/aktuelnosti-iz-komore/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 2,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://www.sarajevo.ba/hr/javni-pozivi-konkursi-i-oglasi": {
    "name": "Grad Sarajevo – Javni pozivi, konkursi i oglasi",
    "url": "https://www.sarajevo.ba/hr/javni-pozivi-konkursi-i-oglasi",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 5,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://www.centar.ba/javni-pozivi-i-konkursi": {
    "name": "Općina Centar Sarajevo",
    "url": "https://www.centar.ba/javni-pozivi-i-konkursi",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 40,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://starigrad.ba/kategorija-jp/javni-poziv/": {
    "name": "Općina Stari Grad Sarajevo",
    "url": "https://starigrad.ba/kategorija-jp/javni-poziv/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 1,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://novosarajevo.ba/javni-pozivi/aktuelni-javni-pozivi/": {
    "name": "Općina Novo Sarajevo",
    "url": "https://novosarajevo.ba/javni-pozivi/aktuelni-javni-pozivi/",
    "state": "down",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 0,
    "reason": "HTTP 404",
    "alerted": "down"
@@ -842,95 +842,95 @@
    "url": "https://opcinailidza.ba/javni-pozivi/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 12,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://vogosca.ba/category/javni_pozivi/": {
    "name": "Općina Vogošća",
    "url": "https://vogosca.ba/category/javni_pozivi/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 7,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://www.ilijas.ba/index.php/javni-pozivi": {
    "name": "Općina Ilijaš",
    "url": "https://www.ilijas.ba/index.php/javni-pozivi",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 2,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://www.trnovo.ba/": {
    "name": "Općina Trnovo",
    "url": "https://www.trnovo.ba/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 1,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://www.zupanijaposavska.ba/category/javni-dokumenti/javni-pozivi/": {
    "name": "Posavski kanton – Javni pozivi",
    "url": "https://www.zupanijaposavska.ba/category/javni-dokumenti/javni-pozivi/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 3,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://mg-zzh.com/category/aktualnosti/novosti/": {
    "name": "ZHK – Ministarstvo gospodarstva",
    "url": "https://mg-zzh.com/category/aktualnosti/novosti/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 3,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://eui-zzh.ba/": {
    "name": "ZHK – Ured Vlade za europske integracije",
    "url": "https://eui-zzh.ba/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 3,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://www.vladahbz.com/ministarstvo-gospodarstva/aktivnosti-ministarstva/": {
    "name": "Kanton 10 (HBŽ) – Ministarstvo gospodarstva",
    "url": "https://www.vladahbz.com/ministarstvo-gospodarstva/aktivnosti-ministarstva/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 1,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://www.undp.org/bs/bosnia-herzegovina/news": {
    "name": "UNDP BiH – Vijesti i javni pozivi",
    "url": "https://www.undp.org/bs/bosnia-herzegovina/news",
    "state": "down",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 0,
    "reason": "HTTP 403",
    "alerted": "down"
@@ -940,76 +940,76 @@
    "url": "https://interreg-hr-ba-me.eu/",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 1,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://bhgrant.ba/firme": {
    "name": "BH Grant – registar poziva za firme",
    "url": "https://bhgrant.ba/firme",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 18,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html": {
    "name": "EU Fondovi i Konkursi – BiH",
    "url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
    "state": "ok",
    "since": "2026-11-09",
-   "days": 5,
+   "days": 6,
    "count": 20,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://www.opcinakupres.ba/naslovnica": {
    "name": "Općina Kupres – prenosi pozive za firme",
    "url": "https://www.opcinakupres.ba/naslovnica",
    "state": "ok",
    "since": "2026-11-10",
-   "days": 4,
+   "days": 5,
    "count": 1,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://hadzici.ba/category/aktuelnosti/": {
    "name": "Općina Hadžići",
    "url": "https://hadzici.ba/category/aktuelnosti/",
    "state": "silent",
    "since": "2026-11-10",
-   "days": 4,
+   "days": 5,
    "count": 0,
    "reason": "",
-   "last_reachable": "2026-11-13"
+   "last_reachable": "2026-11-14"
   },
   "https://serda.ba/bs/novosti": {
    "name": "SERDA – Novosti",
    "url": "https://serda.ba/bs/novosti",
    "state": "ok",
    "since": "2026-11-12",
-   "days": 2,
+   "days": 3,
    "count": 1,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   },
   "https://spring.ba/bs/novosti/pozivi": {
    "name": "Program SPRING – Pozivi",
    "url": "https://spring.ba/bs/novosti/pozivi",
    "state": "ok",
    "since": "2026-11-12",
-   "days": 2,
+   "days": 3,
    "count": 4,
    "reason": "",
-   "last_reachable": "2026-11-13",
-   "last_items": "2026-11-13"
+   "last_reachable": "2026-11-14",
+   "last_items": "2026-11-14"
   }
  },
  "__meta__": {
@@ -2387,5 +2387,89 @@
   "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
   "first_seen": "13.11.2026 14:41",
   "notified_on": "2026-11-13"
+ },
+ "https://bhgrant.ba/poziv/doe-energy-vouchers-office-of-technology-commercialization": {
+  "title": "DOE Energy Vouchers (Office of Technology Commercialization)",
+  "source": "BH Grant – registar poziva za firme",
+  "src_url": "https://bhgrant.ba/firme",
+  "first_seen": "14.11.2026 13:46",
+  "notified_on": "2026-11-14"
+ },
+ "https://www.eufondovikonkursi.com/superconducting-platform-technologies.t27654.html": {
+  "title": "Superconducting Platform Technologies",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "14.11.2026 13:46",
+  "notified_on": "2026-11-14"
+ },
+ "https://www.eufondovikonkursi.com/quantum-experimental-pilot-lines-for-quantum-technologies.t27655.html": {
+  "title": "Quantum Experimental Pilot Lines for Quantum Technologies",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "14.11.2026 13:46",
+  "notified_on": "2026-11-14"
+ },
+ "https://www.eufondovikonkursi.com/next-generation-qkd-systems.t27656.html": {
+  "title": "Next-Generation QKD Systems",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "14.11.2026 13:46",
+  "notified_on": "2026-11-14"
+ },
+ "https://www.eufondovikonkursi.com/neutral-atom-platform-technologies.t27658.html": {
+  "title": "Neutral-Atom Platform Technologies",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "14.11.2026 13:46",
+  "notified_on": "2026-11-14"
+ },
+ "https://www.eufondovikonkursi.com/tech-incubation.t28412.html": {
+  "title": "Tech Incubation",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "14.11.2026 13:46",
+  "notified_on": "2026-11-14"
+ },
+ "https://www.eufondovikonkursi.com/trapped-ion-platform-technologies.t27660.html": {
+  "title": "Trapped-Ion Platform Technologies",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "14.11.2026 13:46",
+  "notified_on": "2026-11-14"
+ },
+ "https://www.eufondovikonkursi.com/quantum-testing-infrastructure-for-quantum-technologies.t27661.html": {
+  "title": "Quantum-Testing Infrastructure for Quantum Technologies",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "14.11.2026 13:46",
+  "notified_on": "2026-11-14"
+ },
+ "https://www.eufondovikonkursi.com/conservators-support.t27561.html": {
+  "title": "Conservators Support",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "14.11.2026 13:46",
+  "notified_on": "2026-11-14"
+ },
+ "https://www.eufondovikonkursi.com/cancer-immunotherapy.t27738.html": {
+  "title": "Cancer Immunotherapy",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "14.11.2026 13:46",
+  "notified_on": "2026-11-14"
+ },
+ "https://www.eufondovikonkursi.com/indigenous-business-perspectives.t27775.html": {
+  "title": "Indigenous Business Perspectives",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "14.11.2026 13:46",
+  "notified_on": "2026-11-14"
+ },
+ "https://www.eufondovikonkursi.com/italian-manuscripts.t27835.html": {
+  "title": "Italian Manuscripts",
+  "source": "EU Fondovi i Konkursi – BiH",
+  "src_url": "https://www.eufondovikonkursi.com/fondovi-konkursi-bosna-i-hercegovina.c27.html",
+  "first_seen": "14.11.2026 13:46",
+  "notified_on": "2026-11-14"
  }
 }
